@@ -1,0 +1,23 @@
+<!--pages/components/mytree/mytree.wxml-->
+<!-- pages/components/mytree/mytree.wxml-->
+<!-- <view>
+  <view>
+    <text wx:if='{{ isBranch }}' bindtap='toggle'>{{ open ? '[ - ]' : '[ + ]' }} </text>
+    <text wx:else>[ - ]</text>
+    <text bindtap='tapItem' data-itemid='{{ model.id }}'>{{ model.text }}</text>
+  </view>
+  <view style='padding-left: 50rpx;' wx:if='{{ isBranch }}' hidden='{{ !open }}'>
+    <mytree wx:for='{{ model.nodes }}' wx:key='id' model='{{ item }}'></mytree>
+  </view>
+</view> -->
+<view>
+  <view wx:for="{{model}}" wx:key="id">
+    <view wx:if="{{item.children}}">
+      ----{{item.userNickName}} 评论 {{item.parentName}}:{{item.content}}
+      <mytree model="{{item.children}}"></mytree>
+    </view>
+    <view wx:else>
+      ----{{item.userNickName}} 评论 {{item.parentName}}:{{item.content}}
+    </view>
+  </view>
+</view>

@@ -1,0 +1,13 @@
+<!--pages/test/test.wxml-->
+<view>
+  <view wx:for="{{list}}"  wx:for-index="index" wx:for-item="item">
+    <view wx:if="{{item.children}}">
+      {{item.userNickName}}:{{item.content}}
+      <mytree model="{{item.children}}"></mytree>
+    </view>
+    <view wx:else>
+      {{item.userNickName}}:{{item.content}}
+    </view>
+  </view>
+</view>
+<!-- <mytree model="{{treeData}}" bind:tapitem='tapItem'></mytree> -->

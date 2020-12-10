@@ -1,0 +1,46 @@
+{
+  "pages": [       "pages/shequ/shequ",
+    "pages/test/test",
+    "pages/my/my",
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/components/mytree/mytree"
+ 
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "",
+        "selectedIconPath": "",
+        "text": "社区"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "iconPath": "",
+        "selectedIconPath": "",
+        "text": "聊天"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "iconPath": "",
+        "selectedIconPath": "",
+        "text": "我的"
+      }
+    ]
+  },
+  "usingComponents": {
+    "i-icon": "/components/iview-weapp/icon/index",
+    "i-row": "/components/iview-weapp/row/index",
+    "i-col": "/components/iview-weapp/col/index",
+    "i-card": "/components/iview-weapp/card/index"
+  }
+}

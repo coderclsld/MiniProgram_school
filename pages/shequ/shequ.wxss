@@ -1,0 +1,32 @@
+/* pages/shequ/shequ.wxss */
+page{
+    font-size: 30rpx;
+   }
+ 
+ 
+ .content {
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   text-overflow: ellipsis;
+    overflow: hidden;
+  }
+  
+  
+  /* 修改列数 */
+  .ellipsis {
+    -webkit-line-clamp: 3;
+  }
+  
+  
+  /* 展示全部 */
+  .unellipsis {
+    -webkit-line-clamp: 0;
+  }
+  .button{
+    /* float: right; */
+    padding: 0rpx;
+    margin: 0rpx;
+    margin-left: 85%;
+    color: blue;
+    margin-right: 10px;
+  }
