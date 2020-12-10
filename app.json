@@ -22,20 +22,14 @@
     "list": [
       {
         "pagePath": "pages/my/my",
-        "iconPath": "",
-        "selectedIconPath": "",
         "text": "社区"
       },
       {
         "pagePath": "pages/logs/logs",
-        "iconPath": "",
-        "selectedIconPath": "",
         "text": "聊天"
       },
       {
         "pagePath": "pages/my/my",
-        "iconPath": "",
-        "selectedIconPath": "",
         "text": "我的"
       }
     ]

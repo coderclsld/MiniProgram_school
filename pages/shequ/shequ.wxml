@@ -12,18 +12,19 @@
         </view>
       </view>
       <view  slot="font">
-        <view wx:for="{{list}}" wx:for-index="index" wx:for-item="item" class="pinglun">
+        <!-- <view wx:for="{{list}}" wx:for-index="index" wx:for-item="item" class="pinglun">
           <view wx:if="{{item.children}}">
             {{item.name}}:{{item.text}}
             <mytree model="{{item.children}}"></mytree>
           </view>
           <view wx:else>
-            <!-- <view style="color:blue">{{item.name}}</view><view>:{{item.text}}</view> -->
+            <view style="color:blue">{{item.name}}</view><view>:{{item.text}}</view>
             {{item.name}}:{{item.text}}
           </view>
-        </view>
-        <view style="color:blue;float:right">>>查看更多</view>
-        <input/>
+        </view> -->
+        <!-- <view style="color:blue;float:right">>>查看更多</view> -->
+        
+        <!-- <input/> -->
       </view>
     </view>
   </view>
