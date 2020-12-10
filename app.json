@@ -1,5 +1,7 @@
 {
-  "pages": [       "pages/shequ/shequ",
+  "pages": [       
+    "pages/kebiao/kebiao",
+    "pages/shequ/shequ",
     "pages/test/test",
     "pages/my/my",
     "pages/index/index",
