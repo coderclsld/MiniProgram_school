@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "mytree":"../components/mytree/mytree"
+    "mytree":"../components/mytree/mytree",
+    "pinglun":"../components/pinglun/pinglun"
   }
 }

@@ -1,35 +1,15 @@
-// pages/components/mytree/mytree.js
-
+// pages/components/pinglun/pinglun.js
 Component({
-  properties: {
-    model:Object,
-    pl:Object
+  properties:{
+    model:Object
   },
   /**
    * 页面的初始数据
    */
   data: {
- 
-  },
-  //   toggle: function(e) {
-  //     if (this.data.isBranch) {
-  //       this.setData({
-  //         open: !this.data.open,
-  //       })
-  //     }
-  //   },
     
-  //   tapItem: function(e) {
-  //     var itemid = e.currentTarget.dataset.itemid;
-  //     console.log('组件里点击的id: ' + itemid);
-  //     this.triggerEvent('tapitem', { itemid: itemid }, { bubbles: true, composed: true });
-  // },
-  // ready: function(e) {
-  //   this.setData({
-  //     isBranch: Boolean(this.data.model.nodes && this.data.model.nodes.length),
-  //   });
-  //   console.log(this.data);
-  // },
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
@@ -41,8 +21,7 @@ Component({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    console.log("1")
-      console.log(model)
+
   },
 
   /**

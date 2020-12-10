@@ -14,9 +14,11 @@ page{
   
   /* 修改列数 */
   .ellipsis {
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp:3;
   }
-  
+  .pinglun{
+    margin-left: 50rpx;
+  } 
   
   /* 展示全部 */
   .unellipsis {

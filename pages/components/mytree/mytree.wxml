@@ -13,11 +13,38 @@
 <view>
   <view wx:for="{{model}}" wx:key="id">
     <view wx:if="{{item.children}}">
-      ----{{item.userNickName}} 评论 {{item.parentName}}:{{item.content}}
+      <view style="margin-left:20rpx;">{{item.name}} 评论 {{item.ppname}}:{{item.text}}</view>
       <mytree model="{{item.children}}"></mytree>
     </view>
-    <view wx:else>
-      ----{{item.userNickName}} 评论 {{item.parentName}}:{{item.content}}
+    <view wx:else style="margin-left:20rpx;">
+      {{item.name}} 评论 {{item.ppname}}:{{item.text}}
     </view>
+  </view>
+</view>
+
+<view wx:for="{{pl}}">
+  <view class=""
+    style="width:95%;border:aliceblue 1px solid;border-radius:30rpx;margin:20rpx;margin-bottom:0rpx;float:left;display:flex;">
+    <view style="width:13%;height:auto;min-height:200rpx;margin:0;">
+      <image src="https://i.loli.net/2017/08/21/599a521472424.jpg" style="width:90%;height:80rpx;border-radius:100rpx">
+      </image>
+    </view>
+    <view class="you" style="float:right;width:85%;height:auto;">
+      <view style="margin:10rpx">{{item.name}}>{{item.ppname}}</view>
+      <view style="width:90%;height:auto;word-wrap: break-word;margin-left:20rpx;">
+        {{item.text}}
+      </view>
+      <view style="width:90%;height:50rpx;display:flex;margin:10rpx">
+        <view style="margin-right:10%">10-07</view>
+        <view style="margin-left:10%">查看回复</view>
+        <view style="margin-left:20%">评论</view>
+      </view>
+      <!-- <view style="border:black 1px solid;height:100rpx;margin:20rpx;margin-top:0rpx;border-radius:30rpx;">
+        asdfadsf
+      </view> -->
+    </view>
+  </view>
+  <view wx:if="item.children">
+    <mytree pl="{{item.children}}"></mytree>
   </view>
 </view>

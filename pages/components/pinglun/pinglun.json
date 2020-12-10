@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "pinglun":"../pinglun/pinglun",
+    "mytree":"../mytree/mytree"
+  }
+}
