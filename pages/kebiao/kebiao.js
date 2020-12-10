@@ -8,6 +8,8 @@ Page({
      num :2,
       list:[     
    ],
+      x1:'',
+      y1:'',
       list1:[[],[],[],[],[],[],[]],
       list2:[[],[],[],[],[],[],[]],
       i:[[],[],[],[],[],[],[]],
@@ -22,7 +24,9 @@ Page({
     var that = this;
     var z = App;
 		wx.request({
-			url:"http://172.16.168.175:8000/kebiao?username=1840915113&password=ye4431978",
+      url:"http://172.16.168.175:8001/kebiao?username=1840915103&password=18441624101404",
+      // http://172.16.168.175:8001/kebiao?username=1840915103&password=18441624101404
+      // http://172.16.168.175:8001/kebiao?username=1840915113&password=ye4431978
 			success(e) {
         that.setData({list:e.data})
         for(var x=0;x<7;x++)
@@ -33,31 +37,26 @@ Page({
             var wz=that.data.list[x][y].indexOf("(")
             var wz1=that.data.list[x][y].indexOf("周")
             var xin= that.data.list[x][y].slice(wz+1,wz1)
-            var xin1=xin.replace(reg,"")
+            var xin1=xin.replace(reg,"")           
             that.data.i[x][y-1]=xin1.replace(ger,"")
             that.data.i[x][y-1]=that.data.i[x][y-1].replace("&","")           
             that.data.i[x][y-1]=that.data.i[x][y-1].replace(" ","")
             var kb=that.data.list[x][y].replace(that.data.i[x][y-1]+"周","").replace("&nbsp;","") 
             that.data.list1[x][y-1]=kb
+            if(xin.indexOf("在线课")!=-1){
+                var b=that.data.i[x][y-1].indexOf(" ");
+                var a=that.data.i[x][y-1].slice(0,b);
+                that.data.i[x][y-1]=that.data.i[x][y-1].replace(that.data.i[x][y-1].slice(0,b),"")
+                that.data.list1[x][y-1]=that.data.list1[x][y-1].replace("在线课","在线课"+a)
+            }
           }
         }
         that.setData({ii:that.data.i})
         that.setData({list2:that.data.list1})
         that.setData({list3:that.data.list1})
         z.globalData = that.data.i
-        // console.log(z.globalData)
-        console.log(that.data.ii)
-        //   console.log(that.data.i) 
-        // console.log(that.data.i)
-          console.log(that.data.list2)
-        // var reg=/[\u4e00-\u9fa5]/g;
-        // var ger=/[a-zA-Z\d]+/;
-        // var wz=that.data.list[0][2].indexOf("(")
-        // var wz1=that.data.list[0][2].indexOf("周")
-        // var xin= that.data.list[0][2].slice(wz+1,wz1)
-        // var xin1=xin.replace(reg,"")
-        // console.log(xin1.replace(ger,""))
-        // console.log(that.data.list[0][2].replace(xin1.replace(ger,"")," "))
+
+
 			},
 			fail() { 
 				console.log("shibai")

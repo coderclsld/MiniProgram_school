@@ -1,8 +1,9 @@
 {
   "pages": [  
+    "pages/kebiao/kebiao",
     "pages/shequ/shequ",
     "pages/components/pinglun/pinglun",
-    "pages/kebiao/kebiao",
+   
     "pages/test/test",
     "pages/my/my",
     "pages/index/index",
