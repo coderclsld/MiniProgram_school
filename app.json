@@ -1,13 +1,17 @@
 {
   "pages": [  
+    "pages/index/index",
+  
+    "pages/logs/logs",
+
     "pages/kebiao/kebiao",
     "pages/shequ/shequ",
     "pages/components/pinglun/pinglun",
    
     "pages/test/test",
     "pages/my/my",
-    "pages/index/index",
-    "pages/logs/logs",
+
+
     "pages/components/mytree/mytree"
    
   ],
@@ -22,15 +26,18 @@
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/my/my",
+        "pagePath": "pages/shequ/shequ",
         "text": "社区"
       },
       {
         "pagePath": "pages/logs/logs",
         "text": "聊天"
       },
+      {"pagePath": "pages/kebiao/kebiao",
+      "text": "课表"
+      },
       {
-        "pagePath": "pages/my/my",
+        "pagePath": "pages/index/index",
         "text": "我的"
       }
     ]

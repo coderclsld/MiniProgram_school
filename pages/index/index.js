@@ -4,7 +4,8 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
+    i:'0',
+    ii:'',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
@@ -43,6 +44,7 @@ Page({
       })
     }
   },
+
   getUserInfo: function(e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
@@ -50,5 +52,89 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
-  }
+  },
+  denglu:function(){
+    var that=this;
+    if(that.data.i=='0'){
+    that.data.i='1'
+    }
+    that.setData({ii:that.data.i})
+    var that = this;
+    var animation = wx.createAnimation({
+      duration: 500,
+      timingFunction: 'linear'
+    })
+    that.animation = animation
+    animation.translateY(700).step()
+    that.setData({
+      animationData: animation.export()
+    })
+    setTimeout(function () {
+      animation.translateY(0).step()
+      that.setData({
+        animationData: animation.export(),
+        chooseSize: false
+      })
+    }, 500)
+  },
+  showshadow:function(e){
+  
+    if (this.data.chooseSize == false) {
+      this.chooseSezi()
+    } else {
+      this.hideModal()
+    }
+},
+
+// 动画函数
+chooseSezi: function (e) {
+  // 用that取代this，防止不必要的情况发生
+  var that = this;
+  // 创建一个动画实例
+  var animation = wx.createAnimation({
+    // 动画持续时间
+    duration: 500,
+    // 定义动画效果，当前是匀速
+    timingFunction: 'linear'
+  })
+  // 将该变量赋值给当前动画
+  that.animation = animation
+  // 先在y轴偏移，然后用step()完成一个动画
+  animation.translateY(1000).step()
+  // 用setData改变当前动画
+  that.setData({
+    // 通过export()方法导出数据
+    animationData: animation.export(),
+    // 改变view里面的Wx：if
+    chooseSize: true
+  })
+  // 设置setTimeout来改变y轴偏移量，实现有感觉的滑动 滑动时间
+  setTimeout(function () {
+    animation.translateY(0).step()
+    that.setData({
+      animationData: animation.export(),
+      clearcart: false
+    })
+  }, 100)
+},
+// 隐藏
+hideModal: function (e) {
+  var that = this;
+  var animation = wx.createAnimation({
+    duration: 500,
+    timingFunction: 'linear'
+  })
+  that.animation = animation
+  animation.translateY(700).step()
+  that.setData({
+    animationData: animation.export()
+  })
+  setTimeout(function () {
+    animation.translateY(0).step()
+    that.setData({
+      animationData: animation.export(),
+      chooseSize: false
+    })
+  }, 500)
+},
 })
