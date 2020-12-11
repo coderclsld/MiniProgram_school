@@ -4,14 +4,14 @@
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
       <image bindtap="bindViewTap" src="{{userInfo.avatarUrl}}" mode="cover" style="width:100rpx;height:100rpx;border-radius: 50%;"></image>
-      <view style="margin-top:-90rpx;margin-left:240rpx;" wx:if="{{ii!=1}}" bindtap="showshadow" >未登录</view>
+      <view style="margin-top:-90rpx;margin-left:230rpx;" wx:if="{{ii!=1}}" bindtap="showshadow" >绑定学号</view>
       <view style="padding-left:120rpx;margin-top:-100rpx;" wx:if="{{ii==1}}">{{userInfo.nickName}}</view>
  
     
     </block>
   </view>
   <view style="background-color:#dce0e4;height:30rpx;width:100%;"></view>
-
+ 
     <view style="background:white;">
       <view style="margin-top:30rpx;margin-bottom:30rpx;margin-left:80rpx"><icon type="success" style="float:left"></icon><view >使用说明</view> </view>
       <view style="height:1rpx;background:#dce0e4;margin-left:70rpx;margin-right:70rpx;"></view>
@@ -20,9 +20,9 @@
       <view style="margin-top:30rpx;margin-bottom:30rpx;margin-left:80rpx"><icon type="success" style="float:left"></icon><view>关于我们</view></view>
       <view style="height:3rpx;background:#dce0e4;margin-left:70rpx;margin-right:70rpx;"></view>
     </view>
-    <view style="background-color:#dce0e4;height:1000rpx;width:100%;margin-top:10rpx;padding-top:1rpx">
-      <button style="margin-top:250rpx;width:90%;font-size:30rpx;color:white;background:#eb0000" >退出登陆</button>
-    </view>
+    <!-- <view style="background-color:#dce0e4;height:1000rpx;width:100%;margin-top:10rpx;padding-top:1rpx">
+      <button style="margin-top:250rpx;width:90%;font-size:30rpx;color:white;background:#eb0000" bindtap="tuichudenglu">退出登陆</button>
+    </view> -->
 </view>
 
 <!-- 遮罩层 -->

@@ -53,6 +53,13 @@ Page({
       hasUserInfo: true
     })
   },
+  tuichudenglu:function(){
+    var that=this;
+    if(that.data.i=='1'){
+    that.data.i='0'
+    }
+    that.setData({ii:that.data.i})
+  },
   denglu:function(){
     var that=this;
     if(that.data.i=='0'){
