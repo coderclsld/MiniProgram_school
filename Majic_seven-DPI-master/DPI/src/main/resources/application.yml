@@ -1,0 +1,27 @@
+server:
+  port: 8000
+
+spring:
+  mvc:
+    static-path-pattern: /image/**
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/dpi?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&serverTimezone=UTC
+    username: root
+    password: root
+
+mybatis:
+  mapper-locations:
+    - classpath*:dao/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+student:
+   age: 20
+   name: chenhaojie
+app:
+  uploadFolder: D://uploadFiles/
+  previewPath: http://127.0.0.1:8000/image/
+web:
+  upload-path: D://uploadFiles/
+
