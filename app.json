@@ -1,5 +1,6 @@
 {
   "pages": [  
+    "pages/my/my",
     "pages/index/index",
   
     "pages/logs/logs",
@@ -9,7 +10,7 @@
     "pages/components/pinglun/pinglun",
    
     "pages/test/test",
-    "pages/my/my",
+ 
 
 
     "pages/components/mytree/mytree"
@@ -30,7 +31,7 @@
         "text": "社区"
       },
       {
-        "pagePath": "pages/logs/logs",
+        "pagePath": "pages/my/my",
         "text": "聊天"
       },
       {"pagePath": "pages/kebiao/kebiao",

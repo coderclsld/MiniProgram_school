@@ -1,1 +1,3 @@
-/* pages/my/my.wxss */
+.a{
+  text-align: center;
+}
