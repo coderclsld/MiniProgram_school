@@ -1,6 +1,9 @@
 {
   "usingComponents": {
     "mytree":"../components/mytree/mytree",
-    "pinglun":"../components/pinglun/pinglun"
+    "pinglun":"../components/pinglun/pinglun",
+    "i-row": "../../components/iview-weapp/row/index",
+    "i-col": "../../components/iview-weapp/col/index",
+    "i-input": "../../components/iview-weapp/input/index"
   }
 }

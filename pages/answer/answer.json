@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "回答",
+  "usingComponents": {
+    "mytree":"../components/mytree/mytree",
+    "pinglun":"../components/pinglun/pinglun"
+  }
+
+}

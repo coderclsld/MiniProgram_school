@@ -2,3 +2,6 @@
   position: absolute;
   color: aliceblue;
 }
+a{
+  color: rgb(68, 67, 67);
+}

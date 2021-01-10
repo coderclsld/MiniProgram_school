@@ -1,16 +1,17 @@
 {
-  "pages": [
+  "pages": [    
+    "pages/test/test",
     "pages/shequ/shequ",
     "pages/my/my",
     "pages/index/index",
-    "pages/logs/logs",
     "pages/kebiao/kebiao",
     "pages/components/pinglun/pinglun",
-    "pages/test/test",
     "pages/components/mytree/mytree",
     "pages/chatRecords/chatRecords",
     "pages/chatting/chatting",
-    "pages/shequtemplate/shequtemplate"
+    "pages/shequtemplate/shequtemplate",
+    "pages/question/question",
+"pages/answer/answer"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -26,7 +27,7 @@
     "borderStyle": "black",
     "list": [
       {
-        "pagePath": "pages/shequ/shequ",
+        "pagePath": "pages/test/test",
         "text": "社区",
         "iconPath": "/static/img/shequ.png"
       },

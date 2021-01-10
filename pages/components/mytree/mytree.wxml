@@ -13,10 +13,10 @@
 <view>
   <view wx:for="{{model}}" wx:key="id">
     <view wx:if="{{item.children}}">
-      <view style="margin-left:20rpx;">{{item.name}} 评论 {{item.ppname}}:{{item.text}}</view>
+      <view  style="margin-left:5rpx;margin-top:10rpx;font-weight:10; color: rgb(68, 67, 67);">{{item.name}} 评论 {{item.ppname}}:{{item.text}}</view>
       <mytree model="{{item.children}}"></mytree>
     </view>
-    <view wx:else style="margin-left:20rpx;">
+    <view wx:else  style="margin-left:0rpx;margin-top:10rpx">
       {{item.name}} 评论 {{item.ppname}}:{{item.text}}
     </view>
   </view>
@@ -25,20 +25,20 @@
 <view wx:for="{{pl}}">
   <view class=""
     style="width:95%;border:aliceblue 1px solid;border-radius:30rpx;margin:20rpx;margin-bottom:0rpx;float:left;display:flex;">
-    <view style="width:13%;height:auto;min-height:200rpx;margin:0;">
-      <image src="https://i.loli.net/2017/08/21/599a521472424.jpg" style="width:90%;height:80rpx;border-radius:100rpx">
+    <view style="width:13%;height:auto;min-height:100rpx;margin:0;">
+      <image src="https://i.loli.net/2017/08/21/599a521472424.jpg" style="width:50rpx;height:50rpx;border-radius:100rpx">
       </image>
     </view>
     <view class="you" style="float:right;width:85%;height:auto;">
-      <view style="margin:10rpx">{{item.name}}>{{item.ppname}}</view>
+      <view style="margin-left:5rpx;margin-top:10rpx;font-weight:10; color: rgb(68, 67, 67);">{{item.name}}<a> 评论 </a>{{item.ppname}}</view>
       <view style="width:90%;height:auto;word-wrap: break-word;margin-left:20rpx;">
-        {{item.text}}
+        <a>{{item.text}}</a>
       </view>
-      <view style="width:90%;height:50rpx;display:flex;margin:10rpx">
+      <!-- <view style="width:90%;height:50rpx;display:flex;margin:10rpx">
         <view style="margin-right:10%">10-07</view>
         <view style="margin-left:10%">查看回复</view>
         <view style="margin-left:20%">评论</view>
-      </view>
+      </view> -->
       <!-- <view style="border:black 1px solid;height:100rpx;margin:20rpx;margin-top:0rpx;border-radius:30rpx;">
         asdfadsf
       </view> -->

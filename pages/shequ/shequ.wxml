@@ -4,7 +4,7 @@
     <view slot="content">
       <view class='containers'>
         <text class="content {{ellipsis?'ellipsis':'unellipsis'}}">
-         {{item.content}}
+          {{item.content}}
         </text>
         <view bindtap='ellipsis' class="button">
           <view>
@@ -26,13 +26,20 @@
           <!-- <input/> -->
           <view style="width:100%;height:2rpx;background:#aaa;opacity:0.3;margin-bottom:20rpx"></view>
           <view style="margin-bottom:50rpx;display:block">
-            <view style="float:left"><image src="../../static/img/dianzan.png" style="height:30rpx;width:30rpx"></image>点赞</view>
-            <view style="float:left;margin-left:30%;"><image src="../../static/img/pinglun_1.png" style="height:30rpx;width:30rpx"></image>评论</view>
-            <view style="float:right"><image src="../../static/img/shoucang.png" style="height:30rpx;width:30rpx"></image>收藏</view>
+            <view style="float:left">
+              <image src="../../static/img/dianzan.png" style="height:30rpx;width:30rpx"></image>点赞
+            </view>
+            <view style="float:left;margin-left:30%;">
+              <image src="../../static/img/pinglun_1.png" style="height:30rpx;width:30rpx"></image>评论
+            </view>
+            <view style="float:right">
+              <image src="../../static/img/shoucang.png" style="height:30rpx;width:30rpx"></image>收藏
+            </view>
           </view>
         </view>
       </view>
     </view>
   </i-card>
   <!-- <pinglun model="{{list}}"></pinglun> -->
+
 </view>

@@ -1,1 +1,8 @@
 /* pages/components/mytree/mytree.wxss */
+a{
+  font-size: small;
+  color: rgb(78, 78, 78);
+}
+view{
+  font-size: small;
+}
