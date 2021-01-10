@@ -23,26 +23,26 @@
     "compileHotReLoad": false,
     "useMultiFrameRuntime": true,
     "useApiHook": true,
-    "useApiHostProcess": true,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
       "outputPath": ""
     },
-    "enableEngineNative": false,
     "bundle": false,
     "useIsolateContext": true,
     "useCompilerModule": true,
     "userConfirmedUseCompilerModuleSwitch": false,
-    "userConfirmedBundleSwitch": false,
     "packNpmManually": false,
     "packNpmRelationList": [],
+    "useApiHostProcess": true,
+    "enableEngineNative": false,
+    "userConfirmedBundleSwitch": false,
     "minifyWXSS": true
   },
   "compileType": "miniprogram",
   "libVersion": "2.14.1",
-  "appid": "wxdbb5a3db539ffffc",
-  "projectname": "miniprogram",
+  "appid": "wxcaa5be8b65a7c138",
+  "projectname": "school",
   "debugOptions": {
     "hidedInDevtools": []
   },
