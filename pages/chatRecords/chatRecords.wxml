@@ -1,0 +1,25 @@
+<!--chatRecords/chatRecords.wxml-->
+<!--
+<view wx:for="{{list}}">
+<view style="margin:20rpx" >
+  <image src="../../nginx.jpg" style="width:100rpx;height:100rpx;border-radius: 50%;"></image>
+  <view style="padding-left:150rpx;margin-top:-105rpx;font-size:30rpx">{{item.name}}</view>
+  <view style="padding-left:500rpx;margin-top:-40rpx;font-size:25rpx">{{item.time}}</view>
+  <view style="padding-left:150rpx;margin-top:30rpx;font-size:25rpx">{{item.xinxi}}</view >
+  <view style="height:2rpx;background:#dce0e4;margin-top:30rpx;margin-left:150rpx;width:100%"></view>
+  </view>
+</view>
+-->
+<view class="message" wx:for="{{chattingHistory}}" wx:for-item="item" wx:key="index" bindtap="enterChatting" data-data='{{item}}'>
+      <image class="left" src="https://i.loli.net/2017/08/21/599a521472424.jpg"></image>
+      <view class="message-info">
+       <view class="right">
+         <text class="senderName">{{item.senderName}}</text>
+         <text class="sendMessage">{{item.sendMessage}}</text>
+       </view>
+       <view>
+         <text class="sendDate">{{item.sendDate}}</text>
+       </view>
+      </view>
+</view>
+  

@@ -1,0 +1,38 @@
+/* chatRecords/chatRecords.wxss */.a{
+  text-align: center;
+}
+
+.message{
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  box-shadow:0rpx 2rpx 5rpx 5rpx rgba(85, 85, 85, 0.10);
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+}
+.left{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 100rpx;
+}
+.message-info{
+  display: flex;
+  width: 78%;
+  justify-content: space-between;
+}
+
+.right{
+  display: flex;
+  flex-direction: column;
+  font-size: 30rpx;
+}
+
+.sendMessage{
+  font-size: 24rpx;
+  color: #AAAAAA;
+  margin-top: 10rpx;
+}
+.sendDate{
+  color: #CCCCCC;
+  font-size: 26rpx;
+}

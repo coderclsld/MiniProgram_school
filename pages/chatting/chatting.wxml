@@ -1,0 +1,44 @@
+<view style="padding-top: 20rpx;">
+  <scroll-view scroll-y scroll-into-view='{{toView}}' style='height: {{scrollHeight}};'>
+    <!-- <view class='scrollMsg'> -->
+    <block wx:key="index" wx:for='{{msgList}}' wx:for-index="index" >
+      <!--  发出（左） -->
+      <view wx:if='{{item.speaker=="others"}}' id='msg-{{index}}' class="others">
+        <view>
+          <image class="head-img" src='https://i.loli.net/2017/08/21/599a521472424.jpg'></image>
+        </view>
+        <view class='left-msg'>{{item.content}}</view>
+      </view>
+
+      <!-- 用户发出（右） -->
+      <view wx:else id='msg-{{index}}' class="our">
+        <view class='right-msg'>{{item.content}}</view>
+        <view class="our-tri triangle">
+          <!--
+           <image  src='../../images/right_msg.png' mode='widthFix'></image>           
+          -->
+
+        </view>
+        <view>
+          <image class="head-img" src='{{cusHeadIcon}}'></image>
+        </view>
+      </view>
+
+    </block>
+
+    <!-- 占位 作用：下滑到底部时，不让底部覆盖最后一条消息 
+    <view style='width: 100%; height: 18vw;'></view> -->
+  </scroll-view>
+
+  <view class='input-room' style='bottom: {{inputBottom}}'>
+    <!--
+      发送图片的+
+      
+    <image style='width: 8%; margin-left: 3.2%;' src='https://i.loli.net/2017/08/21/599a521472424.jpg' mode='widthFix' bindtap="upImg"></image>
+    
+    -->
+    <!-- 软键盘 bindconfirm点击完成是触发adjust-position弹起时是否上推页面 value键盘初始化值  -->
+    <input bindconfirm='sendClick' adjust-position='{{fasle}}' bindinput="getUserInput" value='{{inputVal}}' confirm-type='send' bindfocus='focus' bindblur='blur'></input>
+    <button bindtap="submitTo" class='user_input_text' style="margin: 0 2% 0 3.2%;width: 22%;">发送</button>
+  </view>
+</view>

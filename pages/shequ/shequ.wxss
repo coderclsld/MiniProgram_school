@@ -8,13 +8,14 @@ page{
    display: -webkit-box;
    -webkit-box-orient: vertical;
    text-overflow: ellipsis;
+   word-break: break-all;
     overflow: hidden;
   }
   
   
   /* 修改列数 */
   .ellipsis {
-    -webkit-line-clamp:3;
+    -webkit-line-clamp:2;
   }
   .pinglun{
     margin-left: 50rpx;

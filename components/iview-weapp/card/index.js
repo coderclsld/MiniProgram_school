@@ -18,6 +18,10 @@ Component({
             type: String,
             value: ''
         },
+        name: {
+            type: String,
+            value: ''
+        },
         extra: {
             type: String,
             value: ''

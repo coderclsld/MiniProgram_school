@@ -1,0 +1,33 @@
+<!--pages/shequ/shequ.wxml-->
+<view>
+<i-card title="卡片标题" extra="2020-08-11" thumb="https://i.loli.net/2017/08/21/599a521472424.jpg">
+  <view slot="content">
+    <view class='containers'>
+      <text class="content {{ellipsis?'ellipsis':'unellipsis'}}">
+        飞房间卡了飞机而来发发色法尔范发疯安峰山粉色案发前二十阿里附近发打发打发是范德萨发放就开了房间爱离开房间爱卡房间爱疯爱疯飞房间卡了飞机而来发发色法尔范发疯安峰山粉色案发飞房间卡了飞机而来发发色法尔范发疯安峰山粉色案发
+      </text>
+      <view bindtap='ellipsis' class="button">
+        <view>
+          <view>{{ellipsis?'展开':'收起'}}</view>
+        </view>
+      </view>
+      <view  slot="font">
+        <!-- <view wx:for="{{list}}" wx:for-index="index" wx:for-item="item" class="pinglun">
+          <view wx:if="{{item.children}}">
+            {{item.name}}:{{item.text}}
+            <mytree model="{{item.children}}"></mytree>
+          </view>
+          <view wx:else>
+            <view style="color:blue">{{item.name}}</view><view>:{{item.text}}</view>
+            {{item.name}}:{{item.text}}
+          </view>
+        </view> -->
+        <!-- <view style="color:blue;float:right">>>查看更多</view> -->
+        
+        <!-- <input/> -->
+      </view>
+    </view>
+  </view>
+</i-card>
+<pinglun model="{{list}}"></pinglun>
+</view>

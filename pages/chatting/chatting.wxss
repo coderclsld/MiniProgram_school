@@ -1,0 +1,85 @@
+/* pages/chatting/chatting.wxss */
+page {
+  background-color: #f1f1f1;
+}
+
+.others{
+  display: flex; 
+  padding: 2% 11% 2% 2%;
+}
+.head-img{
+  width: 71rpx; 
+  height: 71rpx; 
+  border-radius: 10rpx;
+}
+.triangle{
+  width: 4%; 
+  height: 11vw; 
+  display: flex; 
+  align-items: center;
+  z-index: 9;
+}
+.other-tri{
+  margin-left: 0.5%; 
+}
+.our-tri{
+  margin-right: 0.5%; 
+}
+.our{
+  display: flex; 
+  justify-content: flex-end; 
+  padding: 2% 2% 2% 11%;
+}
+.input-room {
+  width: 100%;
+  height: 60px;
+  border-top: 1px solid #cdcdcd;
+  background-color: #f1f1f1;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  z-index: 20;
+}
+
+input {
+  width: 100%;
+  height: 58%;
+  background-color: #fff;
+  border-radius: 40rpx;
+  margin-left: 2%;
+  padding: 0 3%;
+  font-size: 28rpx;
+  color: #444;
+}
+
+.left-msg {
+  font-size: 35rpx;
+  color: #444;
+  padding: 2.5% 2.5%;
+  background-color: #fff;
+  margin-left: -1%;
+  border-radius: 10rpx;
+  z-index: 10;
+  max-width: 90%;
+  word-break: break-all;
+  margin-left: 10px;
+}
+
+.right-msg {
+  font-size: 35rpx;
+  color: #444;
+  padding: 2.5% 2.5%;
+  background-color: #96EB6A;
+  margin-right: -1%;
+  border-radius: 10rpx;
+  z-index: 10;
+}
+.user_input_text {
+  height: 34px;
+font-size: 10px;
+line-height: 26px;
+border-radius: 20px;
+padding: 10rpx;
+  background-color: #9bd75c;
+}

@@ -1,45 +1,49 @@
 {
-  "pages": [  
+  "pages": [
+    "pages/shequ/shequ",
     "pages/my/my",
     "pages/index/index",
-  
     "pages/logs/logs",
-
     "pages/kebiao/kebiao",
-    "pages/shequ/shequ",
     "pages/components/pinglun/pinglun",
-   
     "pages/test/test",
- 
-
-
-    "pages/components/mytree/mytree"
-   
+    "pages/components/mytree/mytree",
+    "pages/chatRecords/chatRecords",
+    "pages/chatting/chatting",
+    "pages/shequtemplate/shequtemplate"
   ],
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
   "tabBar": {
+    "color": "#B5B5B5",
+    "selectedColor": "#36A1F1",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "black",
     "list": [
       {
         "pagePath": "pages/shequ/shequ",
-        "text": "社区"
+        "text": "社区",
+        "iconPath": "/static/img/shequ.png"
       },
       {
-        "pagePath": "pages/my/my",
-        "text": "聊天"
+        "pagePath": "pages/chatRecords/chatRecords",
+        "text": "聊天",
+        "iconPath": "/static/img/weibiaoti--.png"
       },
-      {"pagePath": "pages/kebiao/kebiao",
-      "text": "课表"
+      {
+        "pagePath": "pages/kebiao/kebiao",
+        "text": "课表",
+        "iconPath": "/static/img/kechengbiao.png"
       },
       {
         "pagePath": "pages/index/index",
-        "text": "我的"
+        "text": "我的",
+        "iconPath": "/static/img/wode.png"
       }
     ]
   },
