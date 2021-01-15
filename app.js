@@ -1,4 +1,7 @@
 //app.js
+require('./common/runtime.js')
+require('./common/vendor.js')
+require('./common/main.js')
 App({
   onLaunch: function () {
     // 展示本地存储能力

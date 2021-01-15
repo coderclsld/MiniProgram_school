@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "社区",
+  "usingComponents": {
+    "u-icon": "/uview-ui/components/u-icon/u-icon",
+    "u-read-more": "/uview-ui/components/u-read-more/u-read-more",
+    "u-row": "/uview-ui/components/u-row/u-row",
+    "u-col": "/uview-ui/components/u-col/u-col",
+    "u-input": "/uview-ui/components/u-input/u-input",
+    "u-button": "/uview-ui/components/u-button/u-button"
+  }
+}

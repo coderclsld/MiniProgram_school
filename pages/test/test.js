@@ -1,9 +1,8 @@
 //index.js
-
 var util = require('../../utils/util.js')
-var app = getApp()
 Page({
   data: {
+    show:false,
     feed: [],
     feed_length: 0
   },
@@ -12,6 +11,17 @@ Page({
     wx.navigateTo({
       url: '../answer/answer'
     })
+  },
+  tanchuan:function(){
+    if (this.data.show == false) {
+      this.setData({
+        show:true
+      })
+    } else {
+      this.setData({
+        show:false
+      })
+    }
   },
   bindQueTap: function() {
     wx.navigateTo({

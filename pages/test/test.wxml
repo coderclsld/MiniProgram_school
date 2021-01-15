@@ -1,43 +1,47 @@
 <!--index.wxml-->
-<scroll-view scroll-y="true" class="container" bindscrolltoupper="upper" upper-threshold="10" lower-threshold="5" bindscrolltolower="lower"  scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
-  <view class="search flex-wrp">
-      <view class="search-left flex-item">
-          <image src="../../static/img/sousuo-.png"></image>
-          <input placeholder="搜索话题, 问题或人" placeholder-class="search-placeholder"/>
-      </view>
-      <view class="search-right flex-item" bindtap="upper">
-          <image src="../../static/img/tianjia.png"></image>
-      </view>
-  </view>
+<scroll-view scroll-y="true" class="container" bindscrolltoupper="upper" upper-threshold="10" lower-threshold="5"
+    bindscrolltolower="lower" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+    <view class="search flex-wrp">
+        <view class="search-left flex-item">
+            <image src="../../static/img/sousuo-.png"></image>
+            <input placeholder="搜索话题, 问题或人" placeholder-class="search-placeholder" />
+        </view>
+        <view class="search-right flex-item" bindtap="tanchuan">
+            <image src="../../static/img/tianjia.png"></image>
+        </view>
+    </view>
     <block wx:for="{{feed}}" wx:for-index="idx" wx:for-item="item" data-idx="{{idx}}">
         <view class="feed-item">
             <view class="feed-content">
-                <view class="question" qid="{{question_id}}" bindtap="bindQueTap">
+                <view class="question content" qid="{{question_id}}" bindtap="bindQueTap">
                     <a class="question-link">
                         <text>{{item.question}}</text>
                     </a>
                 </view>
                 <view class="feed-source">
-                <a class="">
-                    <view class="avatar">
-                        <image src="../../static/img/icon-test.png"></image>
-                    </view>
-                    <text>{{item.feed_source_name}}回答了该问题</text>
-                </a>
-                <image class="item-more" mode="aspectFit" src=""></image>
-            </view>
+                    <a class="">
+                        <view class="avatar">
+                            <image src="../../static/img/icon-test.png"></image>
+                        </view>
+                        <text>{{item.feed_source_name}}回答了该问题</text>
+                    </a>
+                    <image class="item-more" mode="aspectFit" src=""></image>
+                </view>
                 <view class="answer-body">
-                    <view bindtap="bindItemTap">
-                        <text class="answer-txt" aid="{{answer_id}}">{{item.answer_ctnt}}</text>
+                    <view style="">
+                        <u-read-more class="uReadMore data-v-c8df1f40 vue-ref-in-for" show-height="220"
+                            toggle="{{true}}" data-ref="uReadMore">
+                            <text class="answer-txt" aid="{{answer_id}}">{{item.answer_ctnt}}</text>
+                        </u-read-more>
                     </view>
-                    <view class="answer-actions" bindtap="bindItemTap">
-                        <view class="like dot">
+                    <view class="answer-actions">
+                        <view class="like dot" bindtap="clickgood">
                             <a>{{item.good_num}} 赞同 </a>
                         </view>
-                        <view class="comments dot">
+                        <view class="comments dot" bindtap="clickcomment">
                             <a>{{item.comment_num}} 评论 </a>
                         </view>
-                        <view class="follow-it">
+                        <view class="follow-it" bindtap="clickfocus">
                             <a>关注问题</a>
                         </view>
                     </view>
@@ -46,4 +50,14 @@
         </view>
     </block>
 </scroll-view>
-
+<view>
+    <u-popup bind:input="__e" vue-id="5303c6b4-16" value="{{show}}" 
+      data-event-opts="{{[['^input',[['__set_model',['','show','$event',[]]]]]]}}" class="data-v-c8df1f40"
+      bind:__l="__l" vue-slots="{{['default']}}" mode="bottom">
+      <view style="margin-top:10%;height:10%;">
+      <input type="text" placeholder="请输入问题的标题......" maxlength="40"/>
+    </view>
+      <textarea placeholder="请输入问题的主要内容......" maxlength="2000" auto-height="true" style="width:100%"></textarea>
+      <button style="margin-top:100rpx">发表问题</button>
+    </u-popup>
+</view>

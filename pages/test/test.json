@@ -1,5 +1,7 @@
-{
+{"navigationBarTitleText": "社区",
   "usingComponents": {
-    "mytree":"../components/mytree/mytree"
+    "mytree":"../components/mytree/mytree",
+    "u-read-more": "/uview-ui/components/u-read-more/u-read-more",
+    "u-popup":"/uview-ui/components/u-popup/u-popup"
   }
 }

@@ -18,6 +18,22 @@
 .question-item .que-tag{
 
 }
+.content {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  word-break: break-all;
+   overflow: hidden;
+   -webkit-line-clamp: 1;
+ }
+ .content1 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  word-break: break-all;
+   overflow: hidden;
+   -webkit-line-clamp: 4;
+ }
 .question-item .que-tag .tag{
   height: 28rpx;
   padding: 15rpx 20rpx;
@@ -29,7 +45,8 @@
   vertical-align: middle;
 }
 .question-item .que-title{
-  padding: 40rpx 20rpx 30rpx;
+  padding: 0rpx 20rpx 30rpx;
+  margin: 0;
   font-size: 38rpx;
 }
 .question-item .que-content{

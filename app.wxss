@@ -99,7 +99,7 @@
   padding: 0rpx 0 0 0;
 }
 .container .feed-item .feed-content .question text{
-  font-size: 28rpx;
+  font-size: 32rpx;
   font-weight: 600px;
   line-height: 40rpx;
   text-space: 5rpx;

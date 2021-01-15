@@ -1,0 +1,100 @@
+<view class="data-v-c8df1f40">
+  <block wx:for="{{commentList}}" wx:for-item="res" wx:for-index="index" wx:key="issueid">
+    <view class="bview data-v-c8df1f40">
+      <view class="comment data-v-c8df1f40">
+        <view class="left data-v-c8df1f40">
+          <image src="{{res.url}}" mode="aspectFill" class="data-v-c8df1f40"></image>
+        </view>
+        <view class="right data-v-c8df1f40">
+          <view class="top data-v-c8df1f40">
+            <view class="name data-v-c8df1f40">{{res.name}}</view>
+            <view class="{{['like data-v-c8df1f40',(res.isLike)?'highlight':'']}}">
+              <view class="num data-v-c8df1f40">{{res.likeNum}}</view>
+              <block wx:if="{{!res.isLike}}">
+                <u-icon vue-id="{{'5303c6b4-1-'+index}}" name="thumb-up" size="{{30}}" color="#9a9a9a"
+                  data-event-opts="{{[['^click',[['getLike',[index]]]]]}}" bind:click="__e" class="data-v-c8df1f40"
+                  bind:__l="__l"></u-icon>
+              </block>
+              <block wx:if="{{res.isLike}}">
+                <u-icon vue-id="{{'5303c6b4-2-'+index}}" name="thumb-up-fill" size="{{30}}"
+                  data-event-opts="{{[['^click',[['getLike',[index]]]]]}}" bind:click="__e" class="data-v-c8df1f40"
+                  bind:__l="__l"></u-icon>
+              </block>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view data-event-opts="{{[['tap',[['',['$event']]]]]}}" class="content data-v-c8df1f40" bindtap="__e">
+        <u-read-more class="uReadMore data-v-c8df1f40 vue-ref-in-for" vue-id="{{'5303c6b4-3-'+index}}" show-height="200"
+          toggle="{{true}}" data-ref="uReadMore" bind:__l="__l" vue-slots="{{['default']}}">
+          <rich-text nodes="{{res.contentText}}" class="data-v-c8df1f40"></rich-text>
+        </u-read-more>
+      </view>
+      <view class="foot data-v-c8df1f40" slot="foot">
+        <u-row vue-id="{{'5303c6b4-4-'+index}}" gutter="16" class="data-v-c8df1f40" bind:__l="__l"
+          vue-slots="{{['default']}}">
+          <u-col vue-id="{{('5303c6b4-5-'+index)+','+('5303c6b4-4-'+index)}}" span="3" offset="1"
+            class="data-v-c8df1f40" bind:__l="__l" vue-slots="{{['default']}}">
+            <view data-event-opts="{{[['tap',[['reply',[index]]]]]}}" class="demo-layout bg-purple data-v-c8df1f40"
+              bindtap="__e">
+              <u-icon vue-id="{{('5303c6b4-6-'+index)+','+('5303c6b4-5-'+index)}}" name="chat-fill" size="34" color
+                label="评论" class="data-v-c8df1f40" bind:__l="__l"></u-icon>
+            </view>
+          </u-col>
+          <u-col vue-id="{{('5303c6b4-7-'+index)+','+('5303c6b4-4-'+index)}}" span="3" offset="1"
+            class="data-v-c8df1f40" bind:__l="__l" vue-slots="{{['default']}}">
+            <view class="demo-layout bg-purple-light data-v-c8df1f40">
+              <u-icon vue-id="{{('5303c6b4-8-'+index)+','+('5303c6b4-7-'+index)}}" name="chat-fill" size="34" color
+                label="喜欢" class="data-v-c8df1f40" bind:__l="__l"></u-icon>
+            </view>
+          </u-col>
+          <u-col vue-id="{{('5303c6b4-9-'+index)+','+('5303c6b4-4-'+index)}}" span="2" offset="1"
+            class="data-v-c8df1f40" bind:__l="__l" vue-slots="{{['default']}}">
+            <view class="demo-layout bg-purple-dark data-v-c8df1f40">
+              <u-icon vue-id="{{('5303c6b4-10-'+index)+','+('5303c6b4-9-'+index)}}" name="chat-fill" size="34" color
+                label="收藏" class="data-v-c8df1f40" bind:__l="__l"></u-icon>
+            </view>
+          </u-col>
+        </u-row>
+        <view class="comment data-v-c8df1f40">
+          <block wx:if="{{isreply==index}}">
+            <view class="right data-v-c8df1f40">
+              <view class="reply-box data-v-c8df1f40">
+                <block wx:for="{{pl}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+                  <view class="data-v-c8df1f40">
+                    <block wx:if="{{item.pplid==''}}">
+                      <view class="username data-v-c8df1f40">{{item.plid+"评论问题:"+item.plconnent}}</view>
+                    </block>
+                    <block wx:for="{{pl}}" wx:for-item="item1" wx:for-index="index1" wx:key="index1">
+                      <block wx:if="{{item.pplid==''}}">
+                        <view class="right data-v-c8df1f40">
+                          <block wx:if="{{item1.pplid!=''&&item.plid==item1.pplid}}">
+                            <view class="username data-v-c8df1f40">{{item1.plid+"评论"+item1.pplid+":"+item1.plconnent}}
+                            </view>
+                          </block>
+                        </view>
+                      </block>
+                    </block>
+                  </view>
+                </block>
+              </view>
+              <u-row class="urow1 data-v-c8df1f40" vue-id="{{'5303c6b4-11-'+index}}" bind:__l="__l"
+                vue-slots="{{['default']}}">
+                <u-col vue-id="{{('5303c6b4-12-'+index)+','+('5303c6b4-11-'+index)}}" span="9" class="data-v-c8df1f40"
+                  bind:__l="__l" vue-slots="{{['default']}}">
+                  <u-input vue-id="{{('5303c6b4-13-'+index)+','+('5303c6b4-12-'+index)}}" border="{{border}}"
+                    class="data-v-c8df1f40" bind:__l="__l"></u-input>
+                </u-col>
+                <u-col vue-id="{{('5303c6b4-14-'+index)+','+('5303c6b4-11-'+index)}}" span="2" class="data-v-c8df1f40"
+                  bind:__l="__l" vue-slots="{{['default']}}">
+                  <u-button vue-id="{{('5303c6b4-15-'+index)+','+('5303c6b4-14-'+index)}}" type="primary" size="mini"
+                    class="data-v-c8df1f40" bind:__l="__l" vue-slots="{{['default']}}">评论</u-button>
+                </u-col>
+              </u-row>
+            </view>
+          </block>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>
