@@ -12,7 +12,8 @@
     "pages/shequtemplate/shequtemplate",
     "pages/question/question",
     "pages/answer/answer",
-    "pages/newtest/newtest"
+    "pages/newtest/newtest",
+    "pages/login/login"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -26,7 +27,8 @@
     "selectedColor": "#36A1F1",
     "backgroundColor": "#FFFFFF",
     "borderStyle": "black",
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/test/test",
         "text": "社区",
         "iconPath": "/static/img/shequ.png"

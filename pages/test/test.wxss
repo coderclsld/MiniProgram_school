@@ -3,6 +3,9 @@
 .container{
   height: 1500rpx;
 }
+.avatar{
+  padding-top: 12%;
+}
 .content {
   display: -webkit-box;
   -webkit-box-orient: vertical;

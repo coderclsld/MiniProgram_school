@@ -1,5 +1,5 @@
 <!--question.wxml-->
-<view class="container">
+<view class="container" >
     <view class="question-wrp">
         <view class="question-item">
             <!-- <view class="que-tag">
@@ -10,20 +10,20 @@
                 <text class="tag">文学</text>
             </view> -->
             <view class="que-title">
-                选择 Kindle 而不是纸质书的原因是什么？
+                {{question.title}}
             </view>
-            <view class="que-content">
-                WEB前端*不靠谱天气预报员*想做代码小仙女
+            <view class="que-content" wx:if="{{question.content!=null}}">
+                {{question.content}}
             </view>
             <view class="que-follow">
                 <view class="left">
                     <view class="watch">
                         <image src=""></image>
-                        <text>3316</text>
+                        <text>关注：{{question.focus}}</text>
                     </view>
                     <view class="comment">
                         <image src=""></image>
-                        <text>27</text>
+                        <text></text>
                     </view>
                 </view>
                 <view class="right">
@@ -34,31 +34,36 @@
         <view class="que-operate flex-wrp">
             <view class="invite flex-item">
                 <image src=""></image>
-                <text>邀请回答</text>
+                <text></text>
             </view>
-            <view class="write flex-item">
+            <view class="write flex-item" bindtap="huida">
                 <image src=""></image>
                 <text>写回答</text>
             </view>
         </view>
     </view>
-    <view class="answer-feed">
-        <view  bindtap="bindItemTap" class="feed-item">
+    <view class="answer-feed" wx:for="{{answer}}">
+        <view class="feed-item">
+            <navigator url="../../pages/answer/answer?answer_id={{item.answer_id}}&question_id={{question_id}}">
             <view class="feed-source content">
                 <a class="" bindTap="">
                     <view class="avatar">
                         <image src="../../static/img//icon-test.png"></image>
                     </view>
-                    <text>Rebecca</text>
+                    <text>{{item.username}}</text>
                 </a>
             </view>
+        </navigator>
             <view class="feed-content">
-                <view class="answer-body content1">
-                    <view>
-                        <text class="answer-txt">难道不明白纸质书更贵啊！！！ 若觉得kindle更贵，我觉得要么阅读量太少，那确实没有买kindle的必要。要么买的都是盗版的纸质书？我不清楚不加以评论。。。 另外，用kindle看小说的...难道不明白纸质书更贵啊！！！ 若觉得kindle更贵，我觉得要么阅读量太少，那确实没有买kindle的必要。要么买的都是盗版的纸质书？我不清楚不加以评论。。。 另外，用kindle看小说的... </text>
+                <view class="answer-body">
+                    <view >
+                        <u-read-more class="uReadMore data-v-c8df1f40 vue-ref-in-for" show-height="220"
+                            toggle="{{true}}" data-ref="uReadMore">
+                            <text class="answer-txt" aid="{{answer_id}}">{{item.answer}}</text>
+                        </u-read-more>
                     </view>
                     <view class="answer-actions">
-                        <view class="like dot">
+                        <!-- <view class="like dot">
                             <a>3.9K 赞同 </a>
                         </view>
                         <view class="comments dot">
@@ -66,12 +71,21 @@
                         </view>
                         <view class="time">
                             <a>2 个月前</a>
-                        </view>
+                        </view> -->
 
                     </view>
                 </view>
             </view>
         </view>
+    
     </view>
 </view>
-
+ <u-popup bind:input="__e" vue-id="5303c6b4-16" value="{{show}}" 
+      data-event-opts="{{[['^input',[['__set_model',['','show','$event',[]]]]]]}}" class="data-v-c8df1f40"
+      bind:__l="__l" vue-slots="{{['default']}}" mode="bottom">
+      <view style="margin-top:10%;height:10%;">
+    </view>
+      <textarea placeholder="请输入您要回答的内容......" maxlength="4000" auto-height="true" style="width:100%" length="80%"
+      bindinput="getTextValue"></textarea>
+      <button style="margin-top:50%" bindtap="fabuAnswer">发表问题</button>
+    </u-popup>

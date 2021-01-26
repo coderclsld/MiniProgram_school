@@ -43,6 +43,10 @@ Page({
       children: null
     },
   ],
+  answer_id:"",
+  answer:[],
+  question_id:"",
+  question:[]
   },
   //事件处理函数
   toQuestion: function() {
@@ -50,18 +54,59 @@ Page({
       url: '../question/question'
     })
   },
-  onLoad: function () {
-    console.log('onLoad')
+  onLoad: function (option){
+    this.setData({
+      answer_id:option.answer_id,
+      question_id:option.question_id
+    })
     var that = this
-    //调用应用实例的方法获取全局数据
-    app.getUserInfo(function(userInfo){
-      //更新数据
-      that.setData({
-        userInfo:userInfo
-      })
+    console.log(this.data.answer_id)
+    wx.request({
+      url: app.globalData.host+'/getAnswerById',
+      data:{
+        answer_id:this.data.answer_id
+      },
+      success(res){
+        that.setData({
+          answer:res.data
+        })
+        console.log(that.data.answer)
+      },
+      fail(err){
+        console.log(err)
+      }
+    })
+    wx.request({
+      url: app.globalData.host+'/selectQuestion',
+      data:{
+        question_id:this.data.question_id
+      },
+      success(res){
+        that.setData({
+          question:res.data
+        })
+      },
+      fail(err){
+        console.error(err)
+      }
     })
   },
-  tapName: function(event){
-    console.log(event)
+  zangtong(){
+    let that = this
+    wx.request({
+      url: app.globalData.host+'/addZang',
+      data:{
+        answer_id:this.data.answer_id
+      },
+      success(res){
+        console.log(res.data)
+        that.setData({
+          "answer.zang":res.data
+        })
+      },
+      fail(req){
+        console.error(err)
+      }
+    })
   }
 })

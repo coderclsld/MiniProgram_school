@@ -32,7 +32,7 @@
   text-overflow: ellipsis;
   word-break: break-all;
    overflow: hidden;
-   -webkit-line-clamp: 4;
+   -webkit-line-clamp: 3;
  }
 .question-item .que-tag .tag{
   height: 28rpx;

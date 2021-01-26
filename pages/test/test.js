@@ -1,122 +1,170 @@
 //index.js
-var util = require('../../utils/util.js')
+var util = require("../../utils/util.js");
+const app = getApp();
 Page({
   data: {
-    show:false,
-    feed: [],
-    feed_length: 0
+    list: [
+      
+    ],
+    show: false,
+    count: 0,
+    questions: [],
+    wenti: "",
+    content: "",
+    openid: app.globalData.openid,
   },
-  //事件处理函数
-  bindItemTap: function() {
-    wx.navigateTo({
-      url: '../answer/answer'
-    })
-  },
-  tanchuan:function(){
-    if (this.data.show == false) {
+  fabu() {
+    console.log(app.globalData.userInfo);
+    if (!this.data.show) {
       this.setData({
-        show:true
-      })
+        show: true,
+      });
     } else {
       this.setData({
-        show:false
-      })
+        show: false,
+      });
     }
   },
-  bindQueTap: function() {
-    wx.navigateTo({
-      url: '../question/question'
-    })
-  },
-  onLoad: function () {
-    console.log('onLoad')
-    var that = this
-    //调用应用实例的方法获取全局数据
-    this.getData();
-  },
-  upper: function () {
-    wx.showNavigationBarLoading()
-    this.refresh();
-    console.log("upper");
-    setTimeout(function(){wx.hideNavigationBarLoading();wx.stopPullDownRefresh();}, 2000);
-  },
-  lower: function (e) {
-    wx.showNavigationBarLoading();
+  onLoad() {
     var that = this;
-    setTimeout(function(){wx.hideNavigationBarLoading();that.nextLoad();}, 1000);
-    console.log("lower")
-  },
-  //scroll: function (e) {
-  //  console.log("scroll")
-  //},
-
-  //网络请求数据, 实现首页刷新
-  refresh0: function(){
-    var index_api = '';
-    util.getData(index_api)
-        .then(function(data){
-          //this.setData({
-          //
-          //});
-          console.log(data);
+    this.getQuestion();
+    console.log(app.globalData.openid);
+    wx.cloud.callFunction({
+      name: "openapi",
+      success: function (res) {
+        console.log("openid", res.result.openid);
+        that.setData({
+          openid: res.result.openid,
         });
-  },
-
-  //使用本地 fake 数据实现刷新效果
-  getData: function(){
-    var feed = util.getData2();
-    console.log("loaddata");
-    var feed_data = feed.data;
-    this.setData({
-      feed:feed_data,
-      feed_length: feed_data.length
+        app.globalData.openid = res.result.openid;
+        console.log(app.globalData.openid);
+      },
+      fail: function (res) {
+        console.log("失败:" + res);
+      },
     });
   },
-  refresh: function(){
-    wx.showToast({
-      title: '刷新中',
-      icon: 'loading',
-      duration: 3000
+  getQuestion() {
+    var that = this;
+    var list = [];
+    wx.request({
+      url: app.globalData.host + "/getQuestion",
+      success(res) {
+        that.setData({
+          questions: res.data,
+        });
+        console.log(res.data);
+        for (let i = 0; i < res.data.length; i++) {
+          wx.request({
+            url: app.globalData.host + "/getAnswerByQId",
+            data: {
+              question_id: res.data[i].question_id,
+            },
+            success(req) {
+              console.log(res.data[i].question_id)
+              list.push(req.data[0]);
+              that.setData({
+                list: list,
+              });
+              console.log(list);
+            },
+          });
+        }
+      },
     });
-    var feed = util.getData2();
-    console.log("loaddata");
-    var feed_data = feed.data;
+  },
+  getInputValue(e) {
+    console.log(e.detail.value);
     this.setData({
-      feed:feed_data,
-      feed_length: feed_data.length
+      wenti: e.detail.value,
     });
-    setTimeout(function(){
+  },
+  getTextValue(e) {
+    console.log(e.detail.value);
+    this.setData({
+      content: e.detail.value,
+    });
+  },
+  fabuQuestion() {
+    console.log("问题：" + this.data.wenti + "描述：" + this.data.content);
+    if (this.data.wenti == "") {
+      // 弹窗请填写问题
       wx.showToast({
-        title: '刷新成功',
-        icon: 'success',
-        duration: 2000
-      })
-    },3000)
-
-  },
-
-  //使用本地 fake 数据实现继续加载效果
-  nextLoad: function(){
-    wx.showToast({
-      title: '加载中',
-      icon: 'loading',
-      duration: 4000
-    })
-    var next = util.getNext();
-    console.log("continueload");
-    var next_data = next.data;
-    this.setData({
-      feed: this.data.feed.concat(next_data),
-      feed_length: this.data.feed_length + next_data.length
-    });
-    setTimeout(function(){
+        title: "请填写问题",
+      });
+      return 0;
+    } else if (this.data.content == "") {
+      // 弹窗请填写描述
       wx.showToast({
-        title: '加载成功',
-        icon: 'success',
-        duration: 2000
-      })
-    },3000)
-  }
+        title: "请填写描述",
+      });
+      return 0;
+    } else {
+      var openid = app.globalData.openid;
+      wx.request({
+        // 上传问题和描述到数据库
+        url: app.globalData.host + "/addQuestion",
+        data: {
+          title: this.data.wenti,
+          content: this.data.content,
+          userid: openid,
+          username: app.globalData.userInfo.nickName,
+        },
+        success(res) {
+          wx.showToast({
+            title: "发布成功",
+          });
+        },
+        fail(err) {
+          wx.showToast({
+            title: "您还没有登录",
+          });
+        },
+      });
+    }
 
+    this.fabu();
+  },
+});
 
-})
+// onLoad: function (options) {
+//   this.init();
+// },
+// async init () {
+//   await api.showLoading()
+//   await this.getQusetion()// 请求问题数据
+//   await this.getAnswer()//请求回答数据
+//   await api.hideLoading()
+// },
+// getQusetion(){
+//   return new Promise((resolve, reject) => {
+//     api.getData('http://localhost:8081/getQuestion', {
+//     }).then((res) => {
+//       this.setData({
+//         questions: res.data
+//       })
+//       console.log(res)
+//       resolve()
+//     })
+//       .catch((err) => {
+//         console.error(err)
+//         reject(err)
+//       })
+//   })
+// },
+// getAnswer(){
+//   return new Promise((resolve, reject) => {
+//     api.getData('http://localhost:8081/getAnswerById?question_id=1', {
+//     }).then((res) => {
+//       var an = "that.data.questions[2].answer"
+//       this.setData({
+//         [an]: res.data
+//       })
+//       console.log(this.data.questions)
+//       resolve()
+//     }).catch((err) => {
+//         console.error(err)
+//         reject(err)
+//       })
+//   })
+// },

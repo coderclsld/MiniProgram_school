@@ -1,3 +1,7 @@
 {
-  "navigationBarTitleText": "问题"
+  "navigationBarTitleText": "问题",
+  "usingComponents":{
+    "u-popup":"/uview-ui/components/u-popup/u-popup",
+    "u-read-more": "/uview-ui/components/u-read-more/u-read-more"
+  }
 }
