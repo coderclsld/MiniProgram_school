@@ -12,8 +12,7 @@
     "pages/shequtemplate/shequtemplate",
     "pages/question/question",
     "pages/answer/answer",
-    "pages/newtest/newtest",
-    "pages/login/login"
+    "pages/newtest/newtest"
   ],
   "window": {
     "navigationBarTextStyle": "black",
@@ -37,11 +36,6 @@
         "pagePath": "pages/chatRecords/chatRecords",
         "text": "聊天",
         "iconPath": "/static/img/weibiaoti--.png"
-      },
-      {
-        "pagePath": "pages/kebiao/kebiao",
-        "text": "课表",
-        "iconPath": "/static/img/kechengbiao.png"
       },
       {
         "pagePath": "pages/index/index",

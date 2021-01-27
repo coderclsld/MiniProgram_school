@@ -63,7 +63,12 @@
                         </view>
                     </navigator>
                     <view class="answer-body">
-                        <view style="">                 </view>
+                        <view style="">
+                            <u-read-more class="uReadMore data-v-c8df1f40 vue-ref-in-for" show-height="220" toggle="{{true}}" data-ref="uReadMore">
+                                <text class="answer-txt" aid="{{answer_id}}">
+                                    {{item.content}}</text>
+                            </u-read-more>
+                        </view>
                         <view class="answer-actions">
                             <!-- <view class="like dot" bindtap="">
                                 <a>{{list[idx].zang}} 赞同</a>

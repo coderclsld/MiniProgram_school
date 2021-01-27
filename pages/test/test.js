@@ -3,9 +3,9 @@ var util = require("../../utils/util.js");
 const app = getApp();
 Page({
   data: {
-    list: [
-      
-    ],
+    list:[],
+    shuzu:[],
+    shuzu1:[],
     show: false,
     count: 0,
     questions: [],
@@ -46,7 +46,6 @@ Page({
   },
   getQuestion() {
     var that = this;
-    var list = [];
     wx.request({
       url: app.globalData.host + "/getQuestion",
       success(res) {
@@ -55,21 +54,34 @@ Page({
         });
         console.log(res.data);
         for (let i = 0; i < res.data.length; i++) {
+          let s = new Promise((resolve, reject) => {
           wx.request({
             url: app.globalData.host + "/getAnswerByQId",
             data: {
               question_id: res.data[i].question_id,
             },
             success(req) {
-              console.log(res.data[i].question_id)
-              list.push(req.data[0]);
-              that.setData({
-                list: list,
-              });
-              console.log(list);
-            },
+              resolve(req.data[0])
+            },fail(err){
+              reject(err)
+            }
           });
-        }
+          })
+          that.data.shuzu.push(s);
+          console.log(that.data.shuzu)
+          that.setData({
+            shuzu1: that.data.shuzu,
+          });
+        };
+        that.data.list.length = that.data.shuzu1.length;
+        for (let j = 0; j < that.data.shuzu1.length;j++){
+          that.data.shuzu1[j].then(v=>{
+            that.data.list[j] = v;
+            that.setData({
+            list: that.data.list,
+          });
+        })
+      }
       },
     });
   },
