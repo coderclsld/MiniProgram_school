@@ -9,7 +9,6 @@
         </view>
         <view class='left-msg'>{{item.content}}</view>
       </view>
-
       <!-- 用户发出（右） -->
       <view wx:else id='msg-{{index}}' class="our">
         <view class='right-msg'>{{item.content}}</view>
@@ -17,19 +16,15 @@
           <!--
            <image  src='../../images/right_msg.png' mode='widthFix'></image>           
           -->
-
         </view>
         <view>
           <image class="head-img" src='{{cusHeadIcon}}'></image>
         </view>
       </view>
-
     </block>
-
     <!-- 占位 作用：下滑到底部时，不让底部覆盖最后一条消息 
     <view style='width: 100%; height: 18vw;'></view> -->
   </scroll-view>
-
   <view class='input-room' style='bottom: {{inputBottom}}'>
     <!--
       发送图片的+

@@ -7,8 +7,7 @@ var keyHeight = 0;
 var socketOpen = false;
 var frameBuffer_Data, session, SocketTask;
 var url = 'ws://localhost:8000/imserver/';
-var upload_url ='http://localhost:8000/file/upload'
-import request from '../../utils/request'
+var upload_url ='http://localhost:8000/file/upload';
 /**
  * 初始化数据
  */
@@ -27,24 +26,20 @@ function initData(that) {
   })
   console.log(that.data.msgList)
 }
-
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
     scrollHeight: windowHeight-20+'px',
-    otherName:"",
+    username:"",
     inputVal: '',
     imgUrl: '',
-    otherUserOpenid: '',
-    thisUserOpenid: '',
+    userid:""
   },
-
   changeOtherName:function(){
     wx.setNavigationBarTitle({
-      title:this.data.otherName
+      title:this.data.username
     })
   },
   getUserInput: function(e) {
@@ -57,14 +52,10 @@ Page({
     initData(this);
     this.setData({
       cusHeadIcon: app.globalData.userInfo.avatarUrl, //用户的头像地址
-      otherUserOpenid : options.senderId,  //进入页面记录发送者和接受者的id  
-      thisUserOpenid : options.receiverId,
-      otherName : options.senderName
+      userid : options.userid,  //进入页面记录发送者和接受者的id  
+      username : options.username,
     });
-    this.changeOtherName();
-    if (!socketOpen) {  //首次进入页面socket没有打开 启动socket
-      this.webSocket(this)  
-    } 
+    this.changeOtherName(); 
   },
   /**
    * 生命周期函数--监听页面显示  启动socket
@@ -94,59 +85,9 @@ Page({
         i++;
       })
     })*/
-
   },
   onReady: function () {  //监听页面初次渲染完成 (一个页面只有一次)打开webSocket监听
-    var that = this;
-    SocketTask.onOpen(res => {
-      socketOpen = true;
-      console.log('监听 WebSocket 连接打开事件。', res)
-    })
-    SocketTask.onClose(onClose => {   //如果websocket关闭了  就重新连接
-      console.log('监听 WebSocket 连接关闭事件。', onClose)
-      socketOpen = false;
-      this.webSocket()
-    })
-    SocketTask.onError(onError => {
-      console.log('监听 WebSocket 错误。错误信息', onError)
-      socketOpen = false
-    })
-    SocketTask.onMessage(onMessage => {   //监听WebSocket接受到服务器的消息事件
-      console.log(onMessage);
-      msgList.push({
-        speaker: 'others',
-        contentType: 'text',
-        content: onMessage.data.message
-      })
-      this.setData({
-        msgList,
-        toView: 'msg-' + (msgList.length - 1)
-      });
-      console.log('监听WebSocket接受到服务器的消息事件。服务器返回的消息', onMessage.data)
-    })
-  },
-  webSocket: function (tha) {
-    var that = tha
-    console.log('@@@@@@@@@@@'+that.data.thisUserOpenid)
-    // 创建Socket
-    SocketTask = wx.connectSocket({
-      url: url + that.data.thisUserOpenid ,
-      data: 'data',
-      header: {
-        'content-type': 'application/json'
-      },
-      method: 'post',
-      success: function (res) {
-        socketOpen = true;
-        console.log('WebSocket连接创建', res)
-      },
-      fail: function (err) {
-        wx.showToast({
-          title: '网络异常！',
-        })
-        console.log(err)
-      },
-    })
+
   },
   /**
    * 页面相关事件处理函数--监听用户下拉动作
