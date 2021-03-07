@@ -15,7 +15,8 @@
       <text class="sendMessage">{{item.message}}</text>
     </view>
     <view>
-      <text class="sendDate">{{item.sendDate}}</text>
+      <text class="sendDate">{{item.time}}</text>
     </view>
+    <view style="background-color:red;color:black;border-radius:45%;width:20rpx;height:20rpx" wx:if="{{!item.isread}}"></view>
   </view>
 </view>

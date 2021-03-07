@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "i-tab-bar": "/components/iview-weapp/tab-bar/index",
+    "i-tab-bar-item": "/components/iview-weapp/tab-bar-item/index"
+  }
 }

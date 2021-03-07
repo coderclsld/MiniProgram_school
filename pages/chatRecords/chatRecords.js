@@ -25,13 +25,59 @@ Page({
    */
   onLoad: function (options) {
     var that = this;
+    /*  wx.setStorage({
+      data: [
+        {
+          userid: "1",
+          username: "叶勇",
+          message: "3",
+          isread: false,
+        },
+        {
+          userid: "2",
+          username: "钟柯杰",
+          message: "你好",
+          isread: false,
+        },
+      ],
+      key: "chat",
+    }); */
+    /*  wx.setStorage({
+      data: [
+        {
+          speaker: "others",
+          message: "你好，我是叶勇！",
+          time: "2020-2-12 20:21",
+          isread: true,
+        },
+        {
+          speaker: "our",
+          message: "你好，我是陈霖！",
+          time: "2020-2-12 20:22",
+          isread: true,
+        },
+        {
+          speaker: "others",
+          message: "好久不见了，甚是想念！",
+          time: "2020-2-13 19:11",
+          isread: false,
+        },
+      ],
+      key: "1",
+      success(res) {
+        console.log("缓存更新成功");
+      },
+      fail(err) {
+        console.log(err);
+      },
+    }); */
     wx.getStorage({
       key: "chat",
       success(res) {
-        console.log(res.data);
         that.setData({
           chat: res.data,
         });
+        console.log(that.data.chat);
       },
     });
     this.websocketserver();
@@ -41,30 +87,15 @@ Page({
    */
   onShow: function () {
     var that = this;
-    /* let i = 0;
-    request.get('/loadMessageByUser',{addressee: this.data.otherUserOpenid}).then(res => {  
-      //切换到前台时 发一次request请求，聊天记录
-      res.data.forEach((item) => {
-        if (this.data.thisUserOpenid == item.sender) {
-          this.setData({
-            ['msgList['+i+']'] : {
-              speaker: 'our',
-              contentType: 'text',
-              content: item.content
-            }
-          })
-        } else {
-          this.setData({
-            ['msgList['+i+']'] : {
-              speaker: 'others',
-              contentType: 'text',
-              content: item.content
-            }
-          })
-        }
-        i++;
-      })
-    })*/
+    wx.getStorage({
+      key: "chat",
+      success(res) {
+        that.setData({
+          chat: res.data,
+        });
+        console.log(that.data.chat);
+      },
+    });
   },
   onReady: function () {
     //监听页面初次渲染完成 (一个页面只有一次)打开webSocket监听
@@ -74,6 +105,7 @@ Page({
     wx.navigateBack({});
   },
   websocketserver() {
+    var that = this;
     console.log("进入websocketserver函数");
     app.globalData.SocketTask.onMessage((message) => {
       /*message的消息格式为：
@@ -82,34 +114,39 @@ Page({
         "username":"叶勇",
         "toUserId":"off9p5H3dGHTLwC3DNqa87dxsCxc"}
       */
-      console.log(message.data);
+      console.log(JSON.parse(message.data));
       console.log(JSON.parse(message.data).message);
       var fromUserId = JSON.parse(message.data).fromUserId;
-      var message = JSON.parse(message.data).message;
       var username = JSON.parse(message.data).username;
+      var message = JSON.parse(message.data).message;
       /*
        *遍历看chat看有没有此项，有就直接在该key的缓存value加上记录
        *没有的话就新建立一个key，然后用该key的缓存value加上记录
        */
-      for (var i = 0; i < this.data.chat.lenght; i++) {
-        if (this.data.chat[i].userid == fromUserId) {
+      console.log(that.data.chat);
+      for (let i = 0; i < that.data.chat.length; i++) {
+        console.log("进入循环");
+        if (that.data.chat[i].userid == fromUserId) {
           /**
            *进入这个if表示该用户在chat中存在，所以需要进行下面几个操作
            *1、现在需要的就是在这个函数原有的key对应的value后面添加消息，增加的消息类似下面的格式
-           *{   message:"你好",
-           *    time:"2020-2-12 20:21",
-           *    isread:"false"}
+           {   speaker:"others",
+                message:"你好",
+               time:"2020-2-12 20:21",
+               isread:"false"}
            *2、在chat中更新该对象的最新消息,chat中的对象类似于下面格式
            *{ userid:"1",
            *  username:"陈霖",
            *  usercoin:"",
            *  message:"hello"}
            */
+
           wx.getStorage({
             key: fromUserId,
             success(res) {
               var list = res.data;
               let newlist = {
+                speaker: "others",
                 message: message,
                 time: new Date(),
                 isread: "false",
@@ -129,6 +166,7 @@ Page({
             fail(err) {
               let list = [
                 {
+                  speaker: "others",
                   message: message,
                   time: new Date(),
                   isread: "false",
@@ -148,8 +186,9 @@ Page({
               });
             },
           });
-          let newchat = this.data.chat;
+          let newchat = that.data.chat;
           newchat[i].message = message;
+          newchat[i].isread = false;
           wx.setStorage({
             data: newchat,
             key: "chat",
@@ -157,6 +196,9 @@ Page({
               console.log(
                 "chat数组中" + newchat[i].username + "的最新消息更新成功"
               );
+              that.setData({
+                chat: newchat,
+              });
             },
             fail(err) {
               console.log(
@@ -173,12 +215,13 @@ Page({
            *    time:"2020-2-12 20:21",
            *    isread:"false"}]
            * */
-          let newchat = this.data.chat;
+          let newchat = that.data.chat;
           a = {
             userid: fromUserId,
             username: username,
             usercion: "",
             message: message,
+            isread: false,
           };
           newchat.push(a);
           wx.setStorage({
@@ -188,6 +231,9 @@ Page({
               console.log(
                 "chat数组中" + newchat[i].username + "的最新消息更新成功"
               );
+              that.setData({
+                chat: res.data,
+              });
             },
             fail(err) {
               console.log(
@@ -205,6 +251,7 @@ Page({
                */
               let a = [
                 {
+                  speaker: "others",
                   message: message,
                   time: new Date(),
                   isread: false,
@@ -228,6 +275,7 @@ Page({
                */
               let a = [
                 {
+                  speaker: "others",
                   message: message,
                   time: new Date(),
                   isread: false,
@@ -243,12 +291,13 @@ Page({
                   console.log("用户" + fromUserId + "的消息记录更新失败");
                 },
               });
-              let newchat = this.data.chat;
+              let newchat = that.data.chat;
               a = {
                 userid: fromUserId,
                 username: username,
                 usercion: "",
                 message: message,
+                isread: false,
               };
               newchat.push(a);
               wx.setStorage({
@@ -258,6 +307,9 @@ Page({
                   console.log(
                     "chat数组中" + newchat[i].username + "的最新消息更新成功"
                   );
+                  that.setData({
+                    chat: newchat,
+                  });
                 },
                 fail(err) {
                   console.log(
