@@ -6,7 +6,7 @@ var windowHeight = wx.getSystemInfoSync().windowHeight;
 var keyHeight = 0;
 var socketOpen = false;
 var frameBuffer_Data, session, SocketTask;
-var url = 'ws://localhost:8000/imserver/';
+var url = 'ws://localhost:8011/imserver/';
 var upload_url ='http://localhost:8000/file/upload';
 /**
  * 初始化数据
@@ -141,7 +141,6 @@ Page({
       sourceType: ['album', 'camera'],
       success: (res) => {
         console.log(res);
-        
         that.data.imgUrl = res.tempFilePaths[0]
         if (socketOpen) {
           console.log('test');

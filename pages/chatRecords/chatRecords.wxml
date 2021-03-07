@@ -1,5 +1,4 @@
-<!--
-<view wx:for="{{list}}">
+<!-- <view wx:for="{{list}}">
 <view style="margin:20rpx" >
   <image src="../../nginx.jpg" style="width:100rpx;height:100rpx;border-radius: 50%;"></image>
   <view style="padding-left:150rpx;margin-top:-105rpx;font-size:30rpx">{{item.name}}</view>
@@ -7,18 +6,16 @@
   <view style="padding-left:150rpx;margin-top:30rpx;font-size:25rpx">{{item.xinxi}}</view >
   <view style="height:2rpx;background:#dce0e4;margin-top:30rpx;margin-left:150rpx;width:100%"></view>
   </view>
-</view>
--->
+</view> -->
 <view class="message" wx:for="{{chat}}" wx:for-item="item" wx:key="index" bindtap="enterChatting" data-item='{{item}}'>
-      <!-- <image class="left" src="/static/img/2dbf680d0a237dd46a638c118460d32.png"></image> -->
-      <view class="message-info">
-       <view class="right">
-         <text class="senderName">{{item.username}}</text>
-         <text class="sendMessage">{{item.message}}</text>
-       </view>
-       <view>
-         <text class="sendDate">{{item.sendDate}}</text>
-       </view>
-      </view>
+  <!-- <image class="left" src="{{item.usericon}}"></image> -->
+  <view class="message-info">
+    <view class="right">
+      <text class="senderName">{{item.username}}</text>
+      <text class="sendMessage">{{item.message}}</text>
+    </view>
+    <view>
+      <text class="sendDate">{{item.sendDate}}</text>
+    </view>
+  </view>
 </view>
-  
