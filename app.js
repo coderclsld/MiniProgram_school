@@ -8,9 +8,10 @@ App({
     openid: "",
     canIUse: wx.canIUse("button.open-type.getUserInfo"),
     // host: "http://119.29.196.165:8081",
-    // host: "http://47.112.99.56:8081",
-    host: "http://localhost:8081",
-    chathost: "ws://localhost:8011/imserver/",
+    // chathost: "http://47.112.99.56:8011/imserver/",
+    chathost: "ws://121.37.156.210:8011/imserver/",
+    host: "http://121.37.156.210:8081",
+    // chathost: "ws://localhost:8011/imserver/",
     SocketTask: "",
     socketOpen: false,
   },
@@ -104,7 +105,7 @@ App({
     return new Promise((resolve, reject) => {
       console.log(that.globalData.openid);
       that.globalData.SocketTask = wx.connectSocket({
-        url: "ws://localhost:8011/imserver/" + that.globalData.openid,
+        url: that.globalData.chathost + that.globalData.openid,
         data: "data",
         header: {
           "content-type": "application/json",
