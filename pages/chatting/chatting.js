@@ -6,8 +6,6 @@ var windowHeight = wx.getSystemInfoSync().windowHeight;
 var keyHeight = 0;
 var socketOpen = false;
 var frameBuffer_Data, session, SocketTask;
-var url = "ws://localhost:8011/imserver/";
-var upload_url = "http://localhost:8000/file/upload";
 Page({
   /**
    * 页面的初始数据
@@ -88,7 +86,6 @@ Page({
               if (that.data.chat[i].userid == that.data.userid) {
                 that.data.chat[i].isread = true;
               }
-              console.log(that.data.chat);
             }
             wx.setStorage({
               data: that.data.chat,
@@ -139,7 +136,6 @@ Page({
       },
       fail(err) {},
     });
-
     /* let i = 0;
     request.get('/loadMessageByUser',{addressee: this.data.otherUserOpenid}).then(res => {  
       //切换到前台时 发一次request请求，聊天记录
@@ -212,7 +208,7 @@ Page({
     this.setData({
       msgList: list,
       inputVal: "",
-      toView: "msg-" + (msgList.length - 1), ////发送完数据后应该还是停留在最后一行
+      toView: "toView", ////发送完数据后应该还是停留在最后一行
     });
     wx.setStorage({
       data: list,
@@ -277,7 +273,7 @@ Page({
     this.setData({
       msgList,
       inputVal,
-      toView: "msg-" + (msgList.length - 1), ////发送完数据后应该 还是停留在最后一行
+      toView: "toView", ////发送完数据后应该 还是停留在最后一行
     });
   },
 
@@ -327,7 +323,7 @@ function sendSocketMessage(msg, tha) {
           });
         },
         fail(err) {
-          //失败则说明该id在缓存中不准在，那么就直接在缓存中创建新的聊天记录消息
+          //失败则说明该id在缓存中不存在，那么就直接在缓存中创建新的聊天记录消息
           var list = {
             speaker: "our",
             message: msg,

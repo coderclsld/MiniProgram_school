@@ -7,8 +7,6 @@ App({
     userInfo: null,
     openid: "",
     canIUse: wx.canIUse("button.open-type.getUserInfo"),
-    // host: "http://119.29.196.165:8081",
-    // chathost: "http://47.112.99.56:8011/imserver/",
     chathost: "ws://121.37.156.210:8011/imserver/",
     host: "http://121.37.156.210:8081",
     // chathost: "ws://localhost:8011/imserver/",
