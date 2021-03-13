@@ -181,6 +181,7 @@ Page({
   focus: function (e) {
     this.setData({
       toView: "msg-" + (msgList.length - 1),
+      bottom: e.detail.height
     });
     console.log("获取焦点被执行了");
   },
@@ -188,6 +189,7 @@ Page({
   blur: function (e) {
     this.setData({
       toView: "msg-" + (msgList.length - 1),
+      bottom: 0
     });
     console.log("失去焦点被执行了。。。");
   },

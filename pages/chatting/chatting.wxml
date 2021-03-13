@@ -24,7 +24,7 @@
     <view style='width: 100%; height: 18vw;'></view> -->
     <view id="toView"></view>
   </scroll-view>
-  <view class='input-room' style='bottom: {{inputBottom}}'>
+  <view class='input-room' style='margin-bottom: {{bottom}}px'>
     <!-- 发送图片的+
       
     <image style='width: 8%; margin-left: 3.2%;' src='https://i.loli.net/2017/08/21/599a521472424.jpg' mode='widthFix' bindtap="upImg"></image> -->
