@@ -10,7 +10,7 @@ Page({
   data: {
     chat: null,
     chatlist: [],
-  },
+  }, 
   enterChatting: function (e) {
     wx.navigateTo({
       url:
@@ -19,6 +19,8 @@ Page({
         "&username=" +
         e.currentTarget.dataset.item.username,
     });
+    console.log("user"+e.currentTarget.dataset.item.userid)
+    console.log(e.currentTarget.dataset.item.username)
   },
   /**
    * 生命周期函数--监听页面加载
@@ -88,6 +90,16 @@ Page({
   /**
    * 生命周期函数--监听页面显示  启动socket
    */
+  lxr:function(){
+    wx.navigateTo({
+      url: '../lxr/lxr'//实际路径要写全
+    })
+  },
+  zy:function(){
+    wx.navigateTo({
+      url: '../zhuye/index'//实际路径要写全
+    })
+  },
   onShow: function () {
     var that = this;
     wx.getStorage({
@@ -106,6 +118,7 @@ Page({
     //监听页面初次渲染完成 (一个页面只有一次)打开webSocket监听
   },
   //返回上一月
+  
   toBackClick: function () {
     wx.navigateBack({});
   },

@@ -1,0 +1,55 @@
+<view class="container" style="background:#ffffff;font-size:40rpx;margin-top:40rpx;margin-bottom:40rpx">
+  <view class="userinfo">
+    <block wx:if="{{canIUseOpenData}}" calss="userinfo-opendata">
+      <view class="userinfo-avatar" bindtap="bindViewTap">
+        <open-data type="userAvatarUrl"></open-data>
+        
+      </view>
+      <open-data type="userNickName"></open-data>
+    </block>
+    <block wx:elif="{{!hasUserInfo}}">
+      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
+      <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    </block>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname" >{{userInfo.nickName}}</text>
+    </block>
+  </view>
+</view>
+
+<view style="height:40rpx;background:rgba(238, 238, 241, 0.507);width:100%"> </view>
+<view class="a" >
+  <view class="b" wx:if="{{gz=='1'}}" bindtap="gzz">关注</view>
+  <view class="b" wx:elif="{{gz=='2'}}" bindtap="gzzz">已关注</view>
+  <view style="height:50rpx;width:1%;background:rgba(238, 238, 241, 0.507);margin-top:20rpx"> </view>
+  <view class="b" bindtap="enterChatting">发信息</view>
+</view>
+<view style="height:40rpx;background:rgba(238, 238, 241, 0.507);width:100%"> </view>
+<view class="a" >
+  <view class="d" bindtap="backg1">
+  <view >发表的问题</view>
+  <view style="width:50%;height:10rpx;border-radius: 50rpx;margin-left:25%;background:{{bg1}};"></view>
+  </view>
+  <view style="height:50rpx;width:1%;background:rgba(238, 238, 241, 0.507);margin-top:20rpx"> </view>
+  <view class="d" bindtap="backg2">
+  <view >回答的问题</view>
+  <view style="width:50%;height:10rpx;border-radius: 50rpx;margin-left:25%;background:{{bg2}};"></view>
+  </view>
+  <view style="height:50rpx;width:1%;background:rgba(238, 238, 241, 0.507);margin-top:20rpx"> </view>
+  <view class="d" bindtap="backg3">
+  <view >关注的问题</view>
+  <view style="width:50%;height:10rpx;border-radius: 50rpx;margin-left:25%;background:{{bg3}};"></view>
+  </view>
+</view>
+<view wx:if="{{bg1=='rgb(255, 125, 19)'}}">
+  123123
+</view>
+
+<view wx:if="{{bg2=='rgb(255, 125, 19)'}}">
+  234
+</view>
+
+<view wx:if="{{bg3=='rgb(255, 125, 19)'}}">
+ 345
+</view>

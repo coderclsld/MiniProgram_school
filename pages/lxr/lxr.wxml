@@ -1,0 +1,26 @@
+<view>
+<view style="margin-bottom:50rpx">
+  <icon type="search"></icon>
+<input  type="text" placeholder="搜索" />
+</view>
+<!-- <view  class="ax" style='background:{{background}}' bindtouchstart="dj" bindtouchend="sk" bindtouchmove="sk" bindtap="lt">
+<view > 
+<image src="../../1.png" style="height:80rpx;width:80rpx;margin-left:40rpx;float:left;border-radius: 10rpx;"></image>
+<view style="float:left;margin-top:16rpx;margin-left:30rpx;"> 陈霖</view>
+</view>
+<view style="width:80%;height:2rpx;background:black;float:left;margin-top:35rpx;margin-left:30rpx;margin-bottom:15rpx;"></view>
+</view> -->
+<view class="message" wx:for="{{lx}}" wx:for-item="item" wx:key="index" style='background:{{background}}' bindtap="lt" data-item='{{item}}'>
+  <view class="message-info">
+    <view class="right">
+      <text class="senderName">{{item.username}}</text>
+      <!-- <text class="sendMessage">12</text> -->
+    </view>
+    <!-- <view>
+      <text class="sendDate">34</text>
+    </view> -->
+ 
+  </view>
+</view>
+
+</view>

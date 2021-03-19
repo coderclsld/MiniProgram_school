@@ -1,5 +1,6 @@
 {
   "pages": [
+    
     "pages/test/test",
     "pages/shequ/shequ",
     "pages/my/my",
@@ -12,7 +13,9 @@
     "pages/shequtemplate/shequtemplate",
     "pages/question/question",
     "pages/answer/answer",
-    "pages/newtest/newtest"
+    "pages/newtest/newtest",
+    "pages/zhuye/index",
+    "pages/lxr/lxr"
   ],
   "window": {
     "navigationBarTextStyle": "black",
