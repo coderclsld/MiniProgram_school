@@ -294,6 +294,32 @@ function sendSocketMessage(msg, tha) {
     toUserId: that.data.userid,
   };
   console.log("通过 WebSocket 连接发送数据", JSON.stringify(tmp));
+  wx.getStorage({
+    key:'chat',
+    success(res){
+      console.log(res)
+    },
+    fail(err){
+      var a = [{
+        userid: that.data.userid,
+        username: that.data.username,
+        usercion: "",
+        message: msg,
+        isread: false,
+      }];
+      wx.setStorage({
+        key:'chat',
+        data:a,
+        success(res){
+          console.log("chat设置成功")
+        },
+        fail(err){
+
+        }
+      })
+    }
+  })
+
   app.globalData.SocketTask.send(
     {
       data: JSON.stringify(tmp),
@@ -344,6 +370,8 @@ function sendSocketMessage(msg, tha) {
           });
         },
       });
+     
     }
+
   );
 }
