@@ -11,17 +11,37 @@ Page({
    * 页面的初始数据
    */
   data: {
-    scrollHeight: windowHeight - 20 + "px",
+    isShow: false,//控制emoji表情是否显示
+    isLoad: true,//解决初试加载时emoji动画执行一次
+    content: "",//评论框的内容
+    isLoading: true,//是否显示加载数据提示
+    disabled: true,
+    cfBg: false,
+    _index: 0,
+    emojiChar: "☺-😋-😌-😍-😏-😜-😝-😞-😔-😪-😭-😁-😂-😃-😅-😆-👿-😒-😓-😔-😏-😖-😘-😚-😒-😡-😢-😣-😤-😢-😨-😳-😵-😷",
+    //0x1f---
+    emoji: [
+      "01", "02", "03", "04", "05", "06", "07", "08", "09","10", 
+      "11", "12", "13", "14", "15", "16", "17", "18", "19","20", 
+      "21", "22", "23", "24", "25", "26", "27", "28", "29","30", 
+      "31", "32", "33", "34"
+    ],
+    emojis: [],//qq、微信原始表情
+    alipayEmoji: [],//支付宝表情
+      // connectemojiO: ['U+1F620','U+1F629','U+1F632','U+1F61E','U+1F635','U+1F630','U+1F612','U+1F60D','U+1F624','U+1F61C','U+1F61D',   
+      //    'U+1F60B', 'U+1F618','U+1F61A','U+1F637','U+1F633','U+1F603','U+1F605','U+1F606','U+1F601', 'U+1F602', 'U+1F60A', 'U+263A','U+1F604', 
+      //    'U+1F622','U+1F62D', 'U+1F628', 'U+1F623','U+1F621', 'U+1F60C','U+1F616','U+1F614','U+1F631','U+1F62A','U+1F60F','U+1F613','U+1F625','U+1F62B','U+1F609'
+      // ],
+    scrollHeight: windowHeight - 60 + "px",
     username: "",
     inputVal: "",
     imgUrl: "",
     userid: "",
     msgList: [],
     chat: [],
-    inputVal: "",
+    bottom:""
   },
-  changeOtherName: function () {
-    //设置页面顶部的联系人姓名
+  changeOtherName: function () { 
     wx.setNavigationBarTitle({
       title: this.data.username,
     });
@@ -34,6 +54,18 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var em = {}, that = this, emChar = that.data.emojiChar.split("-");
+    var emojis = []
+    that.data.emoji.forEach(function (v, i) {
+      em = {
+        char: emChar[i],
+        emoji: v
+      };
+      emojis.push(em)
+    });
+       that.setData({
+        emojis: emojis
+      })
     var that = this;
     //将传入的数据赋值给初始化数据
 
@@ -181,7 +213,9 @@ Page({
   focus: function (e) {
     this.setData({
       toView: "msg-" + (msgList.length - 1),
-      bottom: e.detail.height
+      isShow: false,
+      cfBg: false,
+      // bottom:e.detail.height
     });
     console.log("获取焦点被执行了");
   },
@@ -189,7 +223,8 @@ Page({
   blur: function (e) {
     this.setData({
       toView: "msg-" + (msgList.length - 1),
-      bottom: 0
+      // inputVal: e.detail.value,
+      // bottom:0,
     });
     console.log("失去焦点被执行了。。。");
   },
@@ -278,7 +313,59 @@ Page({
       toView: "toView", ////发送完数据后应该 还是停留在最后一行
     });
   },
+  textAreaBlur: function (e) {
+    //获取此时文本域值
+    console.log(e.detail.value)
+    this.setData({
+      content: e.detail.value,
+      // toView: "msg-" + (msgList.length - 1),
+      // bottom: 0
+    })
+    console.log("1")
+  },
+  textAreaFocus: function () {
+    this.setData({
+      isShow: false,
+      cfBg: false,
+      // toView: "msg-" + (msgList.length - 1),
+      // bottom: e.detail.height
+    })
 
+  },
+  textAreaInput: function (e){
+    this.setData({
+      content: e.detail.value
+    })
+
+  },
+  //点击表情显示隐藏表情盒子
+  emojiShowHide: function () {
+    this.setData({
+      isShow: !this.data.isShow,
+      isLoad: false,
+      cfBg: !this.data.false
+    })
+  },emojiChoose: function (e) {
+    //当前输入内容和表情合并
+    this.setData({
+      inputVal: this.data.inputVal + e.currentTarget.dataset.emoji
+    })
+  },
+  //点击emoji背景遮罩隐藏emoji盒子
+  cemojiCfBg: function () {
+    this.setData({
+      isShow: false,
+      cfBg: false
+    })
+  },
+  //发送评论评论 事件处理
+  send: function () {
+    var that = this, conArr = [];
+    //此处延迟的原因是 在点发送时 先执行失去文本焦点 再执行的send 事件 此时获取数据不正确 故手动延迟100毫秒
+    setTimeout(function () {
+      console.log(that.data.content)
+    }, 100)
+  },
   //返回上一月
   toBackClick: function () {
     wx.navigateBack({});

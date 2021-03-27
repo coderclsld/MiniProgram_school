@@ -1,6 +1,5 @@
 {
   "pages": [
-    
     "pages/test/test",
     "pages/shequ/shequ",
     "pages/my/my",
@@ -9,12 +8,12 @@
     "pages/components/pinglun/pinglun",
     "pages/components/mytree/mytree",
     "pages/chatRecords/chatRecords",
-    "pages/chatting/chatting",
     "pages/shequtemplate/shequtemplate",
     "pages/question/question",
     "pages/answer/answer",
     "pages/newtest/newtest",
     "pages/zhuye/index",
+    "pages/chatting/chatting",
     "pages/lxr/lxr"
   ],
   "window": {
