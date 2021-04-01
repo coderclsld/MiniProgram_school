@@ -1,9 +1,8 @@
 <view class="container" style="background:#ffffff;font-size:40rpx;margin-top:40rpx;margin-bottom:40rpx">
   <view class="userinfo">
-    <block wx:if="{{canIUseOpenData}}" calss="userinfo-opendata">
+    <!-- <block wx:if="{{canIUseOpenData}}" calss="userinfo-opendata">
       <view class="userinfo-avatar" bindtap="bindViewTap">
         <open-data type="userAvatarUrl"></open-data>
-        
       </view>
       <open-data type="userNickName"></open-data>
     </block>
@@ -11,10 +10,10 @@
       <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
       <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     </block>
-    <block wx:else>
+    <block wx:else> -->
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname" >{{userInfo.nickName}}</text>
-    </block>
+      <text class="userinfo-nickname" >{{username}}</text>
+    <!-- </block> -->
   </view>
 </view>
 

@@ -8,12 +8,14 @@ App({
     openid: "",
     canIUse: wx.canIUse("button.open-type.getUserInfo"),
     chathost: "ws://47.112.99.56:8011/imserver/",
-    host: "http://47.112.99.56:8081",
+    // host: "http://47.112.99.56:8081",
+    host: "http://localhost:8081",
     // chathost: "ws://localhost:8011/imserver/",
     SocketTask: "",
     socketOpen: false,
   },
   onLaunch: function () {
+    this.getToken();
     this.cloudinit();
     this.dowait();
   },
@@ -156,4 +158,19 @@ App({
       // );
     });
   },
+  getToken(){
+    wx.request({
+      url: 'https://api.weixin.qq.com/cgi-bin/token',
+      data:{
+        grant_type:"client_credential",
+        appid:"wxdbb5a3db539ffffc",
+        secret:"b1baba87652ab7ab2916806ba42ccd47"
+      },success(res){
+          console.log(res);
+      },
+      fail(err){
+
+      }
+    })
+  }
 });

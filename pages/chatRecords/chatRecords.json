@@ -1,4 +1,4 @@
-{
+{"navigationBarTitleText": "聊天",
   "navigationStyle": "custom",
   "usingComponents": {
     "i-tab-bar": "/components/iview-weapp/tab-bar/index",

@@ -10,7 +10,7 @@
 
 <i-sticky scrollTop="{{scrollTop}}" >
     <icon type="clear" size="30" style="margin-top:60rpx;margin-left:10rpx" bindtap="lxr" ></icon> <!--110-->
-    <icon type="clear" size="30" style="margin-top:60rpx;margin-left:10rpx" bindtap="zy" ></icon>
+    <!-- <icon type="clear" size="30" style="margin-top:60rpx;margin-left:10rpx" bindtap="zy" ></icon> -->
 </i-sticky>
 <view class="message" wx:for="{{chat}}" wx:for-item="item" wx:key="index" bindtap="enterChatting" data-item='{{item}}'>
   <!-- <image class="left" src="{{item.usericon}}"></image> -->

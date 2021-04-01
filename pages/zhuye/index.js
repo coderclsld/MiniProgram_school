@@ -12,7 +12,8 @@ Page({
     gz:"1",
     motto: 'Hello World',
     urls:"",
-    userInfo: {},
+    userid:"",
+    username:"",
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     canIUseGetUserProfile: false,
@@ -25,6 +26,11 @@ Page({
       }) 
   },
   onLoad:function(options) {
+    this.setData({
+      userid:options.userid,
+      username:options.username
+    })
+    console.log(this.data.userid)
     if (wx.getUserProfile) {
       this.setData({
         canIUseGetUserProfile: true
@@ -40,7 +46,7 @@ Page({
       key: "lx",
       success(res) {
         for(var i=0;i<res.data.length;i++){
-          if(app.globalData.openid==res.data[i].userid){
+          if(this.data.userid==res.data[i].userid){
             console.log("123")
             console.log(res.data[i].userid)
             that.setData({
@@ -58,9 +64,9 @@ Page({
     wx.navigateTo({
       url:
         "/pages/chatting/chatting?userid=" +
-        app.globalData.openid +
+        this.data.userid +
         "&username=" +
-        app.globalData.userInfo.nickName,
+        this.data.username,
     });
 
   },
@@ -98,8 +104,8 @@ Page({
       let newlx = that.data.lx;
       newlx=[];
       var b={
-        userid: app.globalData.openid,
-        username: app.globalData.userInfo.nickName,
+        userid: that.data.userid,
+        username: that.data.username,
       };
       newlx.push(b);
       console.log(newlx);

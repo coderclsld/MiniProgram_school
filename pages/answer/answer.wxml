@@ -7,10 +7,14 @@
     <view class="bg-half"></view>
     <view class="answerer flex-wrp">
       <view class="avatar flex-item">
-        <image src="../../static/img/icon-test.png"></image>
+        <navigator url="../../pages/zhuye/index?userid={{answer.userid}}&username={{answer.username}}">
+          <image src="../../static/img/icon-test.png"></image>
+        </navigator>
       </view>
       <view class="answerer-info flex-item">
-        <text class="answerer-name">{{answer.username}}</text>
+        <navigator url="../../pages/zhuye/index?userid={{answer.userid}}&username={{answer.username}}">
+          <text class="answerer-name">{{answer.username}}</text>
+        </navigator>
         <!-- <text class="answerer-des">question.title</text> -->
       </view>
       <view class="follow flex-item">
