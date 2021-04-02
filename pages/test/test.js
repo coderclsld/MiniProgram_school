@@ -1,4 +1,4 @@
-//index.js
+ //index.js
 var util = require("../../utils/util.js");
 const app = getApp();
 Page({

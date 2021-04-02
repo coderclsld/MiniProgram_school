@@ -70,10 +70,24 @@ Page({
     //将传入的数据赋值给初始化数据
 
     this.setData({
-      cusHeadIcon: app.globalData.userInfo.avatarUrl, //用户的头像地址
       userid: options.userid, //进入页面记录发送者和接受者的id
       username: options.username, //传过来的用户姓名
     });
+    wx.request({
+      url: app.globalData.host + "/getUserById",
+      data:{
+        userid:this.data.userid
+      },
+      success(res) {
+        console.log(res.data)   
+        that.setData({
+         cusHeadIcon:res.data.avatarUrl
+        })
+      },
+      fail(){
+        console.log("shibai")
+      }
+      })
     this.changeOtherName();
     //得到缓存中初始化的mylist
     wx.getStorage({

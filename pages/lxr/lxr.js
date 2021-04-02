@@ -44,10 +44,12 @@ Page({
   lt:function(e){
     wx.navigateTo({
       url:
-      "/pages/chatting/chatting?userid=" +
-      e.currentTarget.dataset.item.userid +
-      "&username=" +
-      e.currentTarget.dataset.item.username,
+      "/pages/zhuye/index?userid="+this.data.lx[0].userid+"&username="+this.data.lx[0].username
+      // ../../pages/zhuye/index?userid={{answer.userid}}&username={{answer.username}}
+      // "/pages/chatting/chatting?userid=" +
+      // e.currentTarget.dataset.item.userid +
+      // "&username=" +
+      // e.currentTarget.dataset.item.username,
     });
   },
 

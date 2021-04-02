@@ -6,14 +6,15 @@ Page({
   data: {
     lx: null,
     lxlist: [],
+    list:[],
     bg1:"",
     bg2:"",
     bg3:"",
     gz:"1",
     motto: 'Hello World',
-    urls:"",
     userid:"",
     username:"",
+    avatarUrl:"",
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     canIUseGetUserProfile: false,
@@ -22,31 +23,21 @@ Page({
   // 查看图片 但是图片没有在数据库中
   bindViewTap() {
       wx.previewImage({
-      urls:[app.globalData.userInfo.avatarUrl]
+      urls:[this.data.avatarUrl]
       }) 
   },
   onLoad:function(options) {
+    var that = this;
     this.setData({
       userid:options.userid,
       username:options.username
     })
     console.log(this.data.userid)
-    if (wx.getUserProfile) {
-      this.setData({
-        canIUseGetUserProfile: true
-      })
-    }
-    var that=this
-    that.setData({
-      bg1:"rgb(255, 125, 19)",
-      bg2:"#ffffff",
-      bg3:"#ffffff",
-    })
     wx.getStorage({
       key: "lx",
       success(res) {
         for(var i=0;i<res.data.length;i++){
-          if(this.data.userid==res.data[i].userid){
+          if(that.data.userid==res.data[i].userid){
             console.log("123")
             console.log(res.data[i].userid)
             that.setData({
@@ -54,11 +45,37 @@ Page({
             })
         }
       }
-
-
       },
-      fail(err) {},
+      fail(err) {
+        console.log("shiba1i")
+      },
     });
+    wx.request({
+      url: app.globalData.host + "/getUserById",
+      data:{
+        userid:this.data.userid
+      },
+      success(res) {
+        console.log(res.data)   
+        that.setData({
+          list:res.data,
+          avatarUrl:res.data.avatarUrl
+        })
+      },
+      fail(){
+        console.log("shibai")
+      }
+      })    
+    if (wx.getUserProfile) {
+      this.setData({
+        canIUseGetUserProfile: true
+      })
+    }
+    that.setData({
+      bg1:"rgb(255, 125, 19)",
+      bg2:"#ffffff",
+      bg3:"#ffffff",
+    })
   },
   enterChatting: function (e) {
     wx.navigateTo({
@@ -77,6 +94,7 @@ Page({
       bg2:"#ffffff",
       bg3:"#ffffff"
     })
+    console.log(this.data.list)
   },
   backg2:function(){
     var that=this
@@ -108,7 +126,7 @@ Page({
         username: that.data.username,
       };
       newlx.push(b);
-      console.log(newlx);
+      console.log("guangzhuchenggong");
       wx.setStorage({
         data: newlx,
         key: "lx",
@@ -131,7 +149,7 @@ Page({
     wx.removeStorage({
       key:"lx",
       success(res){
-        console.log("chenggong")
+        console.log("quxiaoguanzhu")
         that.setData({
           lx:null,
         })

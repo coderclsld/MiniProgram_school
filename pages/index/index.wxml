@@ -6,16 +6,14 @@
       <image bindtap="bindViewTap" src="{{userInfo.avatarUrl}}" mode="cover" style="width:100rpx;height:100rpx;border-radius: 50%;"></image>
       <view style="margin-top:-90rpx;margin-left:230rpx;" wx:if="{{ii!=1}}" bindtap="showshadow" >绑定学号</view>
       <view style="padding-left:120rpx;margin-top:-100rpx;" wx:if="{{ii==1}}">{{userInfo.nickName}}</view>
- 
-    
     </block>
   </view>
   <view style="background-color:#dce0e4;height:30rpx;width:100%;"></view>
  
     <view style="background:white;">
-      <view style="margin-top:30rpx;margin-bottom:30rpx;margin-left:80rpx"><icon type="success" style="float:left"></icon><view >使用说明</view> </view>
+      <view style="margin-top:30rpx;margin-bottom:30rpx;margin-left:80rpx"><icon type="success" style="float:left"></icon><view bindtap="cssj">使用说明</view> </view>
       <view style="height:1rpx;background:#dce0e4;margin-left:70rpx;margin-right:70rpx;"></view>
-      <view style="margin-top:30rpx;margin-bottom:30rpx;margin-left:80rpx"> <icon type="success" style="float:left"></icon><view>更新日志</view></view>
+      <view style="margin-top:30rpx;margin-bottom:30rpx;margin-left:80rpx"> <icon type="success" style="float:left"></icon><view bindtap="hddx">更新日志</view></view>
       <view style="height:2rpx;background:#dce0e4;margin-left:70rpx;margin-right:70rpx;"></view>
       <view style="margin-top:30rpx;margin-bottom:30rpx;margin-left:80rpx"><icon type="success" style="float:left"></icon><view>关于我们</view></view>
       <view style="height:3rpx;background:#dce0e4;margin-left:70rpx;margin-right:70rpx;"></view>

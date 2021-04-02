@@ -4,10 +4,12 @@ const app = getApp()
 
 Page({
   data: {
+    list:[],
     i:'0',
     ii:'',
     userInfo: {},
     hasUserInfo: false,
+    userid:"",
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   //事件处理函数
@@ -20,14 +22,17 @@ Page({
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
+        userid:app.globalData.openid,
         hasUserInfo: true
       })
+      console.log(this.data.userInfo)
     } else if (this.data.canIUse){
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {
         this.setData({
-          userInfo: res.userInfo,
+          userInfo:app.globalData.userInfo,
+          userid:app.globalData.openid,
           hasUserInfo: true
         })
       }
@@ -43,8 +48,28 @@ Page({
         }
       })
     }
+    console.log(this.data.userid)
+    console.log(this.data.userInfo.avatarUrl)
+    console.log(this.data.userInfo.nickName)
   },
-
+  hddx:function(e){
+    var that = this;
+    wx.request({
+      url: app.globalData.host + "/getUserById",
+      data:{
+        userid:'off9p5E70cxb7fxIUsbhpw4dgKwY'
+      },
+      success(res) {
+        console.log(res.data)   
+        that.setData({
+          list:res.data,
+        })
+      },
+      fail(){
+        console.log("shibai")
+      }
+      })
+  },
   getUserInfo: function(e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
@@ -52,6 +77,7 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+
   },
   tuichudenglu:function(){
     var that=this;
@@ -59,6 +85,26 @@ Page({
     that.data.i='0'
     }
     that.setData({ii:that.data.i})
+  },
+  //传送个人信息
+  cssj:function(){
+    wx.request({
+      url: app.globalData.host + "/adduserid",
+      data: {
+        userid: this.data.userid,
+        nickname:this.data.userInfo.nickName,
+        avatarUrl:this.data.userInfo.avatarUrl,
+        genderclass:null,
+        gender:0,
+        studentNum:0,
+      },
+      success(res) {
+        console.log("成功")
+      },
+      fail(err) {
+        console.log("失败")
+      },
+    });
   },
   denglu:function(){
     var that=this;

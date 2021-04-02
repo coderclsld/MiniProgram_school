@@ -88,6 +88,8 @@ Page({
   tapName: function(event){
     console.log(event)
   },
+
+  // 发布问题，获取登陆者的所有信息 同
   fabuAnswer(){
     console.log("问题："+this.data.huida)
     if(this.data.huida == ""){
