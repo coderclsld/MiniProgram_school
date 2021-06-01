@@ -2,19 +2,19 @@
 require("./common/runtime.js");
 require("./common/vendor.js");
 require("./common/main.js");
-App({
+App({ 
   globalData: {
     userInfo: null,
     openid: "",
     canIUse: wx.canIUse("button.open-type.getUserInfo"),
-    chathost: "ws://47.112.99.56:8011/imserver/",
-    // host: "http://47.112.99.56:8081",
-    host: "http://localhost:8081",
+    chathost: "ws://47.112.99.56:8011/imserver/", 
+    host: "http://47.112.99.56:8081",
+    // host: "http://localhost:8081",
     // chathost: "ws://localhost:8011/imserver/",
     SocketTask: "",
     socketOpen: false,
-  },
-  onLaunch: function () {
+  }, 
+  onLaunch: function () { 
     this.getToken();
     this.cloudinit();
     this.dowait();
@@ -75,27 +75,38 @@ App({
     var that = this;
     console.log("going getUserInfo");
     return new Promise((resolve, reject) => {
-      wx.getSetting({
-        success: function (res) {
-          if (res.authSetting["scope.userInfo"]) {
-            // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-            wx.getUserInfo({
-              success: function (res) {
-                that.globalData.userInfo = res.userInfo;
-                console.log(res.userInfo);
-                resolve(that.globalData.userInfo);
-              },
-              fail(err) {
-                console.log(err);
-                reject(err);
-              },
-            });
-          }
+      wx.getStorage({
+        key: "userInfo",
+        success(res) {
+          that.globalData.hasUserInfo = true
+          that.globalData.userInfo = res.data
         },
-        fail(err) {
-          reject(err);
-        },
-      });
+        fail() {
+          that.globalData.hasUserInfo = false
+        }
+      })
+      // wx.getSetting({
+      //   success: function (res) {
+      //     if (res.authSetting["scope.userInfo"]) {
+      //       // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+      //       wx.getUserInfo({
+      //         success: function (res) {
+      //           that.globalData.userInfo = res.userInfo;
+      //           console.log(res.userInfo);
+      //           resolve(that.globalData.userInfo);
+      //         },
+      //         fail(err) {
+      //           console.log(err);
+      //           reject(err);
+      //         },
+      //       });
+      //     }
+      //   },
+      //   fail(err) {
+      //     reject(err);
+      //   },
+      // });
+
     });
   },
   // 连接websocket服务器

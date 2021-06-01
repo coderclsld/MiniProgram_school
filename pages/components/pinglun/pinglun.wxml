@@ -7,9 +7,9 @@
       </image>
     </view>
     <view class="you" style="float:right;width:85%;height:auto;">
-      <view style="margin-left:5rpx;margin-top:10rpx;font-weight:10; color: rgb(68, 67, 67);">{{item.name}}</view>
+      <view style="margin-left:5rpx;margin-top:10rpx;font-weight:10; color: rgb(68, 67, 67);">{{item.username}}</view>
       <view style="width:90%;height:auto;margin-left:20rpx;">
-        <a>{{item.text}}</a>
+        <a>{{item.content}}</a>
       </view>
       <view style="width:90%;height:50rpx;display:flex;margin:10rpx">
         <view style="margin-right:10%"><a>10-07</a></view>

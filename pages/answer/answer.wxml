@@ -29,15 +29,15 @@
 
   </view>
   <view class="search flex-wrp">
-    <view class="search-left flex-item">
-      <input placeholder="评论" placeholder-class="search-placeholder" />
+    <view class="search-left flex-item" style="margin-bottom:150px">
+      <input placeholder="评论" placeholder-class="search-placeholder" bindinput="faninput" />
     </view>
     <view class="search-right flex-item" bindtap="upper">
       <image src="../../static/img/pinglun_1.png">s</image>
     </view>
   </view>
 </view>
-<!-- <pinglun model="{{list}}" style="margin:10rpx;"></pinglun> -->
+<pinglun model="{{list}}" style="margin:10rpx;"></pinglun>
 <view class="answer-footer flex-wrp">
   <view class="good flex-item">
     <view class="good-bad">

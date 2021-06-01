@@ -6,6 +6,7 @@ Page({
   data: {
     motto: '知乎--微信小程序版',
     userInfo: {},
+    input:"",
     list:[{
       name: "陈霖",
       text: "挺不错的",
@@ -90,6 +91,21 @@ Page({
         console.error(err)
       }
     })
+    wx.request({
+      url: app.globalData.host+'/getCommentByAnswerId',
+      data:{
+        answerId:this.data.answer_id
+      },
+      success(res){
+        console.log(res.data)
+        that.setData({
+          list:res.data
+        })
+      },
+      fail(err){
+        console.error(err)
+      }
+    })
   },
   zangtong(){
     let that = this
@@ -103,6 +119,34 @@ Page({
         that.setData({
           "answer.zang":res.data
         })
+      },
+      fail(req){
+        console.error(err)
+      }
+    })
+  },
+  faninput(e){
+    console.log(e.detail.value);
+    this.setData({
+      input: e.detail.value,
+    });
+  },
+  upper(){
+    var that = this;
+    wx.request({
+      url: app.globalData.host+'/addComment',
+      // url: 'http://localhost:8081/addComment',
+      data:{
+        userid:app.globalData.openid,
+        parent_id:"",
+        content:this.data.input,
+        answer_id:this.data.answer_id,
+        parent_name:"",
+        username:app.globalData.userInfo.nickName,
+        avatar_url:app.globalData.userInfo.avatar_url
+      },
+      success(res){
+        console.log(res)
       },
       fail(req){
         console.error(err)

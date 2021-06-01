@@ -1,7 +1,7 @@
 <!--index.wxml-->
 <view >
   <view style="padding-top:50rpx;background:white;height:180rpx;padding-left:80rpx">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+    <button wx:if="{{!hasUserInfo}}" bindtap="getUI" type='primary' > 授权登录 </button>
     <block wx:else>
       <image bindtap="bindViewTap" src="{{userInfo.avatarUrl}}" mode="cover" style="width:100rpx;height:100rpx;border-radius: 50%;"></image>
       <view style="margin-top:-90rpx;margin-left:230rpx;" wx:if="{{ii!=1}}" bindtap="showshadow" >绑定学号</view>
