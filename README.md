@@ -29,3 +29,5 @@
 实现对基于Vue的viewUI库进行改造后嵌入原生微信小程序，
 
 对聊天信息和用户信息进行本地缓存实现聊天记录的缓存。
+
+后端仓库连接：https://gitee.com/clsld/school-back-end/edit/
